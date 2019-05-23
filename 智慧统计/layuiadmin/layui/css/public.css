@@ -1,0 +1,84 @@
+*{margin:0;padding:0;}
+input[type='button'], input[type='submit'], input[type='reset'], textarea {
+    -webkit-appearance: none;}
+/*头部*/
+.header{width:100%;background:#009688;color:#fff;text-align: center;}
+.header header h2{height:44px;line-height:44px;}
+.header header .layui-btn{background-color:#009688;}
+/*搜索框*/
+.search-wrap{width:100%;margin-bottom:5px;position:relative}
+.search-wrap #title{width:85%;}
+.search-wrap #search{width:15%;padding-left:0px;position:absolute;right:0;top:0;}
+/*主体*/
+.layui-card-header{padding: 0 5px;}
+.layui-card-body{padding:5px 5px;}
+/*指标列表*/
+.quota-list li{font-size:12px;}
+.layui-card-list .layui-card{margin-bottom:5px;}
+.layui-card-list .layui-card:last-child{margin-bottom:0px;}
+.quota-list{display:flex; display: -webkit-flex; /* Safari */;flex-direction: row;flex-wrap: nowrap;justify-content:space-around;}
+.layui-card-header h4{font-size:12px;line-height:1.5;}
+.layui-card-body{/* background:url(../images/layui-card-body.jpg) no-repeat center center; */text-align: center;}
+.layui-card-body h4 span{display:inline-block;width:16px;height:16px;}
+.layui-card-body h4 span.up{background:url(../images/up.png) no-repeat center center;}
+.layui-card-body h4 span.down{background:url(../images/down.png) no-repeat center center;}
+/*按钮颜色*/
+.layer-ext-myskin .layui-layer-btn a{border-color: #009688;background-color: #009688;}
+/*底部菜单*/
+.footer{width:100%;background-color:#fff;position:fixed;left:0;bottom:0;z-index:1000;}
+.footer footer ul {display:flex; display: -webkit-flex; /* Safari */;flex-direction: row;flex-wrap: nowrap;justify-content:space-around;width:100%;margin-bottom: 0;}
+.footer footer ul li{list-style: none;text-align:center;}
+.footer footer ul li a{display:block;font-size:14px;padding:10% 0;line-height: 1;}
+.footer footer ul li a i{display:inline-block;width:16px;height:16px;margin-bottom: 1px;}
+.footer footer ul li a .footer-bg1{background:url(../images/home1.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li a .footer-bg2{background:url(../images/quota1.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li a .footer-bg3{background:url(../images/special1.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li a .footer-bg4{background:url(../images/report1.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li a .footer-bg5{background:url(../images/user1.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li.active a{color:#009688;}
+.footer footer ul li.active a .footer-bg1{background:url(../images/home2.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li.active a .footer-bg2{background:url(../images/quota2.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li.active a .footer-bg3{background:url(../images/special2.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li.active a .footer-bg4{background:url(../images/report2.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li.active a .footer-bg5{background:url(../images/user2.png) no-repeat;background-size:16px 16px;}
+/*版权信息*/
+.copyright{width:100%;font-size:12px;color:#999;text-align:center;line-height:30px;margin-bottom:36px;}
+/*用户登陆注册*/
+.layadmin-user-login-footer{padding:0;}
+/*icon图标*/
+.layui-card-header .layui-icon{position:static; }
+.layui-input input,.layui-input button{line-height:32px}
+/*主体*/
+
+.layui-container.main-wrap{padding:5px;padding-bottom:0px;}
+.layui-card-header{height:auto;}
+.layui-icon.layui-icon-table{color:#009688}
+/*关注*/
+.layui-card-header-left{overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+.layui-card-header-right{text-align:right;}
+.layui-icon.layui-icon-star-fill{color:#FFB800}
+/*列间距*/
+.layui-col-space10{margin:0;}
+/*表单提示*/
+.layui-form-mid.layui-word-aux{text-align: left;}
+/*移动端适配*/
+/* @media screen and (max-width:1024px){
+.layui-container.main-wrap{min-height:90.1%;}
+}
+@media screen and (max-width:768px){
+.layui-container.main-wrap{min-height:86.8%;}
+}
+@media screen and (max-width:414px){
+.layui-container.main-wrap{min-height:82%;}
+}
+@media screen and (max-width:375px){
+.layui-container.main-wrap{min-height:79.7%;}
+}
+@media screen and (max-width:360px){
+.layui-container.main-wrap{min-height:78.8%;}
+}
+@media screen and (max-width:320px){
+.layui-container.main-wrap{min-height:76.2%;}
+.copyright{font-size:12px;}
+footer ul li a{font-size:12px;}
+} */

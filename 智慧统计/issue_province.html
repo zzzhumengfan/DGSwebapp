@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>智慧统计</title>
+		<link rel="stylesheet" href="layuiadmin/layui/css/layui.css" />
+		<link rel="stylesheet" href="layuiadmin/dist/style/admin.css" />
+		<link rel="stylesheet" href="layuiadmin/layui/css/public.css" />
+		<link rel="stylesheet" href="layuiadmin/layui/css/other.css" />
+	</head>
+	<body>
+
+		<div class="header">
+			<header>
+				<div class="layui-row">
+					<div class="layui-col-xs2 layui-col-sm2">
+						<a href="javascript:history.back(-1)" class="layui-btn layui-btn-lg"><i class="layui-icon"></i></a>
+					</div>
+					<div class="layui-col-xs8 layui-col-sm8">
+						<h2>智慧统计-本期值</h2>
+					</div>
+					<div class="layui-col-xs2 layui-col-sm2">
+						<a href="javascript:gonext()" class="layui-btn layui-btn-lg"><i class="layui-icon"></i></a>
+					</div>
+				</div>
+			</header>
+		</div>
+
+
+		<div class="layui-container main-wrap">
+			<section class="layui-card">
+				<div class="layui-card-header">
+					<h3><strong>上市</strong>营业收入本期值</h3>
+				</div>
+				<div class="layui-card-body">
+					<!-- 折柱混合-->
+					<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+					<div id="issue-main" style="width:100%;height:400px;"></div>
+				</div>
+				<div class="layui-card-body">
+					<div class="layui-row layui-form">
+						<div class="layui-col-xs3">
+							<label class="layui-form-label">时间周期</label></div>
+						<div class="layui-col-xs4">
+							<div class=" layui-input-inline">
+								<input type="text" class="layui-input" id="test-laydate-start" placeholder="开始日期" lay-key="1">
+							</div>
+						</div>
+						<div class="layui-col-xs1">
+							<div class=" layui-form-mid">
+								--
+							</div>
+						</div>
+						<div class="layui-col-xs4">
+							<div class=" layui-input-inline">
+								<input type="text" class="layui-input" id="test-laydate-end" placeholder="结束日期" lay-key="2">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+		<div class="copyright">
+			Copyright &copy; 2019 中国移动通信集团有限公司研究院
+		</div>
+		<div class="footer">
+			<footer>
+				<ul>
+					<li>
+						<a href="index.html"><i class="footer-bg1">&nbsp;</i></br>首页</a>
+					</li>
+					<li class="active">
+						<a href="quota.html"><i class="footer-bg2">&nbsp;</i></br>指标</a>
+					</li>
+					<li>
+						<a href="special.html"><i class="footer-bg3">&nbsp;</i></br>专题</a>
+					</li>
+					<li>
+						<a href="report.html"><i class="footer-bg4">&nbsp;</i></br>报告</a>
+					</li>
+					<li>
+						<a href="user.html"><i class="footer-bg5">&nbsp;</i></br>我的</a>
+					</li>
+				</ul>
+			</footer>
+		</div>
+		<script type="text/javascript" src="layuiadmin/layui/layui.js"></script>
+		<script src="layuiadmin/layui/js/watermark.js"></script>
+		<script>
+			watermark({
+				watermark_txt: "18663105621"
+			}) //传入动态水印内容
+			function gonext() {
+				window.history.forward() //返回下一页
+			}
+
+			layui.use(['jquery', 'echarts', 'laydate', 'table'], function() {
+				var $ = layui.$;
+
+				var laydate = layui.laydate;
+				//开始日期
+				var insStart = laydate.render({
+					elem: '#test-laydate-start',
+					type: 'month',
+					value: '2018-04', //必须遵循format参数设定的格式
+					done: function(value, date) {
+						//console.log(value); 得到日期生成的值
+						//console.log(date); 得到日期时间对象
+						//更新结束日期的最小日期
+						/* insEnd.config.min = lay.extend({}, date, {
+							month: date.month - 1,
+
+						}); */
+						//自动弹出结束日期的选择器
+						insEnd.config.elem[0].focus();
+					}
+				});
+				$("#test-laydate-start").focus(function() {
+					document.activeElement.blur(); //当文本框获取焦点时，禁止手机弹出自带的输入键盘
+				});
+
+				//结束日期
+				var insEnd = laydate.render({
+					elem: '#test-laydate-end',
+					type: 'month',
+					value: '2019-03', //必须遵循format参数设定的格式
+					done: function(value, date) {
+						//更新开始日期的最大日期
+						insStart.config.max = lay.extend({}, date, {
+							month: date.month - 1,
+
+						});
+					}
+				});
+				$("#test-laydate-end").focus(function() {
+					document.activeElement.blur(); //当文本框获取焦点时，禁止手机弹出自带的输入键盘
+				});
+
+				//app.title = '折线图';
+				var echarts = layui.echarts
+				// 基于准备好的dom，初始化echarts实例
+				var myChartIssue = echarts.init(document.getElementById('issue-main'));
+				// 指定图表的配置项和数据
+				Issueoption = {
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'cross',
+							crossStyle: {
+								color: '#999'
+							}
+						}
+					},
+					toolbox: {
+						feature: {
+							dataView: {
+								show: true,
+								readOnly: false
+							},
+							magicType: {
+								show: true,
+								type: ['bar', 'line']
+							},
+							restore: {
+								show: true
+							},
+							saveAsImage: {
+								show: true
+							}
+						}
+					},
+					legend: {
+						top: 'top',
+						data: ['指标值'],
+						show: true
+					},
+					xAxis: [{
+						//type: 'time',
+						//name: '时间',
+						data: [],
+						axisPointer: {
+							type: 'shadow'
+						},
+						axisLabel: {
+							rotate: -45
+						}
+					}],
+					yAxis: [{
+						//type: 'category',
+						//name: '指标值',
+						min: 0,
+						max: 100,
+						interval: 20,
+					}],
+					series: [{
+						name: '指标值',
+						type: 'line',
+						yAxisIndex: 0,
+						data: [],
+						itemStyle: {
+							normal: {
+								label: {
+									show: true, //开启显示
+									position: 'top', //在上方显示
+									textStyle: { //数值样式
+										color: 'black',
+										fontSize: 10
+									}
+								}
+							}
+						}
+					}]
+				};
+				// 使用刚指定的配置项和数据显示图表。
+				myChartIssue.setOption(Issueoption);
+
+				myChartIssue.showLoading(); //数据加载完之前先显示一段简单的loading动画
+
+				var month = []; //省份（实际用来盛放X轴坐标值）
+				var nums = [] //指标值（实际用来盛放Y轴坐标值）
+				$.ajax({
+					type: "get",
+					async: true, //异步请求
+					url: "https://www.easy-mock.com/mock/5c6e22c28ef35e1f80e352ab/Intelligence_statistics/issue_province_month",
+					data: {},
+					dataType: "json", //返回数据形式为json
+					success: function(data) {
+						//请求成功时执行该函数内容，data即为服务器返回的json对象
+						console.log(data)
+						if (data.rows) {
+							for (var i = 0; i < data.rows.length; i++) {
+								month.push(data.rows[i].month); //挨个取出类别并填入类别数组
+								nums.push(data.rows[i].target); //挨个取出类别并填入类别数组
+							}
+							myChartIssue.hideLoading(); //隐藏加载动画
+							myChartIssue.setOption({ //加载数据图表
+								xAxis: {
+									data: month
+								},
+								series: [{
+									data: nums
+								}]
+							});
+						}
+					},
+					error: function(errorMsg) {
+						//请求失败时执行该函数
+						layer.alert("图表请求数据失败!");
+						myChart1.hideLoading(); //隐藏加载动画
+					}
+				})
+
+				$(window).resize(function() {
+					myChartIssue.resize()
+				});
+
+			})
+		</script>
+	</body>
+</html>

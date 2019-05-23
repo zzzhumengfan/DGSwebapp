@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>智慧统计</title>
+		<link rel="stylesheet" href="layuiadmin/layui/css/layui.css" />
+		<link rel="stylesheet" href="layuiadmin/dist/style/admin.css" />
+		<link rel="stylesheet" href="layuiadmin/layui/css/public.css" />
+		<link rel="stylesheet" href="layuiadmin/layui/css/other.css" />
+	</head>
+	<body>
+
+		<div class="header">
+			<header>
+				<div class="layui-row">
+					<div class="layui-col-xs2 layui-col-sm2">
+						<a href="javascript:history.back(-1)" class="layui-btn layui-btn-lg"><i class="layui-icon"></i></a>
+					</div>
+					<div class="layui-col-xs8 layui-col-sm8">
+						<h2>智慧统计-本期值</h2>
+					</div>
+					<div class="layui-col-xs2 layui-col-sm2">
+						<a href="javascript:gonext()" class="layui-btn layui-btn-lg"><i class="layui-icon"></i></a>
+					</div>
+				</div>
+			</header>
+		</div>
+
+		<div class="layui-container main-wrap">
+			<section class="layui-card">
+				<div class="layui-card-header">
+					<h3>营业收入本期值</h3>
+				</div>
+				<div class="layui-card-body">
+					<div class="layui-row layui-form">
+						<div class="layui-col-xs3">
+							<label class="layui-form-label">选择月份</label></div>
+						<div class="layui-col-xs9">
+							<div class=" layui-input-inline">
+								<input type="text" class="layui-input" id="test-laydate-start" placeholder="" lay-key="1">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-card-body">
+					<!-- 折柱混合-->
+					<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+					<div id="issue-main" style="width:100%;height:200px;"></div>
+				</div>
+				<div class="layui-card-body">
+					<table id="report_table"></table>
+				</div>
+			</section>
+		</div>
+		<div class="copyright">
+			Copyright &copy; 2019 中国移动通信集团有限公司研究院
+		</div>
+		<div class="footer">
+			<footer>
+				<ul>
+					<li>
+						<a href="index.html"><i class="footer-bg1">&nbsp;</i></br>首页</a>
+					</li>
+					<li class="active">
+						<a href="quota.html"><i class="footer-bg2">&nbsp;</i></br>指标</a>
+					</li>
+					<li>
+						<a href="special.html"><i class="footer-bg3">&nbsp;</i></br>专题</a>
+					</li>
+					<li>
+						<a href="report.html"><i class="footer-bg4">&nbsp;</i></br>报告</a>
+					</li>
+					<li>
+						<a href="user.html"><i class="footer-bg5">&nbsp;</i></br>我的</a>
+					</li>
+				</ul>
+			</footer>
+		</div>
+		<script type="text/javascript" src="layuiadmin/layui/layui.js"></script>
+		<script src="layuiadmin/layui/js/watermark.js"></script>
+		<script>
+			watermark({
+				watermark_txt: "18663105621"
+			}) //传入动态水印内容
+			function gonext() {
+				window.history.forward() //返回下一页
+			}
+
+			layui.use(['jquery', 'echarts', 'laydate', 'table'], function() {
+				var $ = layui.$;
+				echarts = layui.echarts
+				var laydate = layui.laydate;
+				//开始日期
+				var insStart = laydate.render({
+					elem: '#test-laydate-start',
+					type: 'month',
+					value: '2018-04', //必须遵循format参数设定的格式
+					done: function(value, date) {
+						//console.log(value); 得到日期生成的值
+						//console.log(date); 得到日期时间对象
+					}
+				});
+				$("#test-laydate-start").focus(function() {
+					document.activeElement.blur(); //当文本框获取焦点时，禁止手机弹出自带的输入键盘
+				});
+				//app.title = '柱状图';
+				// 基于准备好的dom，初始化echarts实例
+				var myChartIssue = echarts.init(document.getElementById('issue-main'));
+				// 指定图表的配置项和数据
+				Issueoption = {
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'cross',
+							crossStyle: {
+								color: '#999'
+							}
+						}
+					},
+					toolbox: {
+						feature: {
+							dataView: {
+								show: true,
+								readOnly: false
+							},
+							magicType: {
+								show: true,
+								type: ['line', 'bar']
+							},
+							restore: {
+								show: true
+							},
+							saveAsImage: {
+								show: true
+							}
+						}
+					},
+					legend: {
+						top: 'top',
+						data: ['指标值'],
+						show: true
+					},
+					grid: {
+						left: 25,
+						right: 0,
+						top: 30
+					},
+					dataZoom: [{
+							type: 'slider', //图表下方的伸缩条
+							show: true, //是否显示
+							realtime: true, //
+							bottom: -5,
+							start: 0, //伸缩条开始位置（1-100），可以随时更改
+							end: 50 //伸缩条结束位置（1-100），可以随时更改
+						},
+						{
+							type: 'inside', //鼠标滚轮
+							realtime: false
+							//还有很多属性可以设置，详见文档
+						}
+
+					],
+					xAxis: [{
+						//type: 'value',
+						data: [],
+						interval: 0,
+						axisPointer: {
+							type: 'shadow'
+						}
+					}],
+					yAxis: [{
+						//type: 'category',
+						interval: 50,
+						axisLabel: {
+							min: 0,
+							max: 100
+						}
+					}],
+					series: [{
+						name: '指标值',
+						type: 'bar',
+						data: [],
+						itemStyle: {
+							normal: {
+								label: {
+									show: true, //开启显示
+									position: 'top', //在右方显示
+									textStyle: { //数值样式
+										color: 'black',
+										fontSize: 10
+									}
+								}
+							}
+						}
+					}]
+				};
+				// 使用刚指定的配置项和数据显示图表。
+				myChartIssue.setOption(Issueoption);
+
+				myChartIssue.showLoading(); //数据加载完之前先显示一段简单的loading动画
+
+				var province = []; //省份（实际用来盛放X轴坐标值）
+				var nums = [] //指标值（实际用来盛放Y轴坐标值）
+				$.ajax({
+					type: "get",
+					async: true, //异步请求
+					url: "https://www.easy-mock.com/mock/5c6e22c28ef35e1f80e352ab/Intelligence_statistics/issue_province",
+					data: {},
+					dataType: "json", //返回数据形式为json
+					success: function(data) {
+						//请求成功时执行该函数内容，data即为服务器返回的json对象
+						if (data.data) {
+							for (var i = 0; i < data.data.length; i++) {
+								province.push(data.data[i].province); //挨个取出类别并填入类别数组
+								nums.push(data.data[i].target); //挨个取出类别并填入类别数组
+							}
+							myChartIssue.hideLoading(); //隐藏加载动画
+							myChartIssue.setOption({ //加载数据图表
+								xAxis: {
+									data: province,
+									axisLabel: {
+										interval: 0,
+										formatter: function(val) {
+											return val.split("").join("\n");
+										}
+									}
+								},
+								series: [{
+									data: nums
+								}]
+							});
+						}
+					},
+					error: function() {
+						//请求失败时执行该函数
+						layer.alert("图表请求数据失败!");
+						myChartIssue.hideLoading(); //隐藏加载动画
+					}
+				})
+				$(window).resize(function() {
+					myChartIssue.resize()
+				});
+
+				//数据表格				
+				var table = layui.table;
+				table.render({
+					elem: '#report_table',
+					url: 'https://www.easy-mock.com/mock/5c6e22c28ef35e1f80e352ab/Intelligence_statistics/issue_province', //数据接口
+					page: false, //开启分页
+					even: true, //隔行背景
+					cellMinWidth: 40, //常规单元格的最小宽度（默认：60）
+					unresize:true,//是否禁用拖拽列宽（默认：false）
+					autoSort: true,
+					/* initSort: {
+						field: 'target', //排序字段，对应 cols 设定的各字段名,
+						type: 'desc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
+					}, */
+					cols: [
+						[ //表头
+							{
+								type: 'numbers', //序号列 根据指标值排序
+								title: '序号',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center'
+							},
+							{
+								field: 'province',
+								title: '省份',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center'
+
+							}, {
+								field: 'target',
+								title: '指标值',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center',
+								sort: true //是否允许排序（默认：false)
+							},
+							{
+								field: 'cptarget',
+								title: '当期指标值',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center',
+								sort: true //是否允许排序（默认：false)
+							},
+							{
+								field: 'chainratio',
+								title: '环比',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center',
+								sort: true, //是否允许排序（默认：false)
+								templet: '<div>{{d.chainratio}}%</div> '
+							},
+							{
+								field: 'yoy',
+								title: '同比',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center',
+								sort: true, //是否允许排序（默认：false)
+								templet: '<div>{{d.yoy}}%</div> '
+							},
+							{
+								field: 'year',
+								title: '本年累计数',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center',
+								sort: true //是否允许排序（默认：false)
+							}
+						]
+					]
+				});
+
+				table.on('row', function(obj) {
+					//obj.tr得到当前行元素对象
+					//obj.data 得到当前行数据
+					window.location.href = "issue_province.html";
+				});
+			})
+		</script>
+	</body>
+</html>
