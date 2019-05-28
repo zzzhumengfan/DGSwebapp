@@ -21,8 +21,8 @@
 				<!-- 搜索框 -->
 				<div class="search-wrap">
 					<form class="layui-form" action="">
-						<input type="text" name="search" id="search" required lay-verify="required" placeholder="请输入关键词" autocomplete="off"
-						 class="layui-btn layui-btn-radius layui-btn-primary">
+						<input type="text" name="search-title" id="search-title" required lay-verify="required" placeholder="请输入关键词"
+						 autocomplete="off" class="layui-btn layui-btn-radius layui-btn-primary">
 						</from>
 				</div>
 			</header>
@@ -49,6 +49,7 @@
 					</div>
 					<div class="layui-tab-item layui-anim layui-anim-upbit" id="follow_wrap">
 						<a class="layui-btn layui-btn-fluid" id="follow"><i class="layui-icon layui-icon-add-1"></i>添加自选指标</a>
+						<ul class="layui-card-list" id="follow_list"></ul>
 					</div>
 				</div>
 			</div>
@@ -84,16 +85,61 @@
 				watermark_txt: "18663105621"
 			}) //传入动态水印内容
 
-			layui.use(['jquery', 'form', 'carousel', 'element'], function() {
+			layui.use(['jquery', 'carousel', 'element','layer','form'], function() {
 				var $ = layui.$
-				var form = layui.form; //搜索框
+				var layer = layui.layer;
+				var form = layui.form;
 				var carousel = layui.carousel; //轮播图
 				var element = layui.element; //选项卡tabs切换
-
-				$("#search").focus(function() {
-					window.location.href = "search.html";
+				
+				
+				$("#search-title").focus(function() {
+					var index = layer.open({
+					  type: 1,
+					  title: false,
+					  scrollbar: false,
+					  content: $('#search-model'),
+					  anim: 2,
+					  isOutAnim: false,
+					  closeBtn:0
+					});
+					layer.full(index);
+					$("#close").click(function() {
+					layer.closeAll(); //疯狂模式，关闭所有层
+					})
 				});
-
+				
+				$(".search-card .layui-card-body li").each(function() {
+					$(this).click(function() {
+						var search_text = $(this).html()
+						$("#search").val(search_text)
+					})
+				})
+				Promise.resolve().then(() => {
+					$("#search").focus();
+				});
+				form.on('submit(searchform)', function(data) {
+					console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
+					console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
+					console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+					//return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+					window.location.href = "search_result.html";
+				});
+				
+				
+				$("#delete").click(function() {
+					layer.confirm('是否删除所有记录?', {
+						icon: 3,
+						title: '提示'
+					}, function(index) {
+						$("#history").empty();
+						layer.close(index);
+						// });
+					})
+				})
+				$("#refresh").click(function() {
+					console.log("刷新")
+				})
 
 				//建造实例
 				var options = {
@@ -154,7 +200,6 @@
 					success: function(data) {
 						$("#recommend").html("");
 						let recommend = "";
-						console.log(data.list)
 						$.each(data.list, function(i, f) {
 							recommend +=
 								`<li class="layui-card ` + `color` + i % 4 +
@@ -192,9 +237,110 @@
 				});
 
 
+                //关注指标
+				$.ajax({
+					type: "get",
+					async: true, //异步请求
+					url: "https://www.easy-mock.com/mock/5c6e22c28ef35e1f80e352ab/Intelligence_statistics/index",
+					data: {},
+					dataType: "json", //返回数据形式为json
+					success: function(data) {
+						//筛选已关注的指标
+						var follow_data=data.list.filter(function(item) {
+                           return item.state==true;
+						});
+						console.log(follow_data)
+						$("#follow_list").html("");
+						let follow_list = "";
+						$.each(follow_data, function(i, f) {
+							follow_list +=
+								`<li class="layui-card ` + `color` + i % 4 +
+								`">
+						<div class="layui-card-header layui-row">
+						  <div class="layui-col-xs8 layui-card-header-left">
+							${f.name}&nbsp;(${f.company})
+						  </div>
+						  <div class="layui-col-xs4 layui-card-header-right" index="${f.id}"><i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注</div>
+						</div>
+						<div class="layui-card-body layui-row">
+							<ul class="quota-list">`
+								for (var j = 0; j < f.itemlen; j++) {
+									follow_list += `<li><h4>${f.calvalue[j]}</h4><h5>${f.calname[j]}</h5></li>`
+								}
+							follow_list += `</ul>
+						</div>`
+						})
+						
+						$("#follow_list").html(follow_list);
+
+						$(".quota-list li").click(function() {
+							window.location.href = "issue.html";
+						});
+						//关注与取消关注 
+						$(".layui-card-header-right").click(function() {
+							if ($(this).children().hasClass("layui-icon-star")) {
+								$(this).html(` <i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注`)
+							} else {
+								$(this).parent().parent().slideUp(500, function() {
+									$(this).remove();
+								});
+							}
+						})
+					},
+					error: function() {
+						//请求失败时执行该函数
+						layer.alert("请求数据失败!");
+
+					}
+				});
+
 
 
 			});
 		</script>
 	</body>
+	<div id="search-model">
+		<div class="search-header layui-row">
+			<div class="layui-col-xs1">
+				<span id="close"><i class="layui-icon layui-icon-left" style="font-size:24px;"></i></span>
+			</div>
+			<!-- 搜索框 -->
+			<div class="search-box layui-col-xs11">
+				<form class="layui-form" action="">
+					<input type="text" name="search" id="search" lay-verify="required" placeholder="请输入关键词" autocomplete="off" class="layui-btn layui-btn-radius layui-btn-primary"
+					 autofocus="autofocus">
+					<button class="layui-btn layui-btn-radius layui-btn-normal" id="submit" lay-submit lay-filter="searchform">搜索</button>
+					</from>
+			</div>
+		</div>
+		<div class="layui-container main-wrap search-body">
+			<div class="layui-card search-card">
+				<div class="layui-card-header layui-row">
+					<div class="layui-col-xs8 layui-card-header-left">
+						搜索历史
+					</div>
+					<div class="layui-col-xs4 layui-card-header-right" id="delete"><i class="layui-icon layui-icon-delete" style="font-size:18px;"></i>
+					</div>
+				</div>
+				<ul class="layui-card-body" id="history">
+					<li>客户数</li>
+					<li>市场份额</li>
+				</ul>
+			</div>
+			<div class="layui-card">
+				<div class="layui-card-header layui-row">
+					<div class="layui-col-xs8 layui-card-header-left">
+						猜你喜欢
+					</div>
+					<div class="layui-col-xs4 layui-card-header-right" id="refresh"><i class="layui-icon layui-icon-refresh" style="font-size:18px;"></i>
+					</div>
+				</div>
+				<ul class="layui-card-body">
+					<li>客户数</li>
+					<li>客户数</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
 </html>

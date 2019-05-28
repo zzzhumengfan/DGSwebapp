@@ -32,12 +32,3 @@ html,body{display:block;height:100%;width:100%;position: absolute;left: 0;top: 0
 /* .layui-table-view .layui-table td{padding:0} */
 .layui-table-view .layui-table th{padding:0}
 .layui-table-view .layui-table th .layui-table-cell{line-height:1.1;height:35px;}
-/*搜索页*/
-.search_header{padding:5px 0;}
-.search_header .layui-form #search{width:75%;margin:0 5px 0 0;background:#eee;}
-.search_header .layui-form #submit{width:20%;margin:0 0;}
-.search_header .back{display:block;width:100%;height:38px;line-height: 38px;text-align: center;}
-.layui-card.search{margin-bottom: 20px;box-shadow: 0 0px 0px 0 rgba(0,0,0,0);}
-.layui-card.search .layui-card-header{border-bottom: none;}
-.layui-card.search .layui-card-body{display:flex; display: -webkit-flex; /* Safari */;flex-direction:row;flex-wrap: wrap;justify-content: flex-start;}
-.layui-card.search .layui-card-body li{background:#eeeeee;border-radius:15px;padding:0 10px;line-height:2;margin-right:5px;}

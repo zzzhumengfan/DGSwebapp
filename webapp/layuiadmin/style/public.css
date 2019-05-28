@@ -5,7 +5,7 @@ input[type='button'], input[type='submit'], input[type='reset'], textarea {
 .header{width:100%;background:#006cff;color:#fff;text-align: center;padding-bottom:5px;}
 .header header h2{height:44px;line-height:44px;}
 /*搜索框*/
-.search-wrap #search{width:95%;margin:0 auto;text-align:left;}
+.search-wrap #search-title{width:95%;margin:0 auto;text-align:left;}
 /*主体*/
 .layui-card-header{padding: 0 5px;}
 .layui-card-body{padding:5px 5px;}

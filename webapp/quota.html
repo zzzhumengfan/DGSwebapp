@@ -25,13 +25,6 @@
 		<div class="header">
 			<header>
 				<h2>智慧统计-指标</h2>
-				<!-- 搜索框 -->
-				<div class="search-wrap">
-					<form class="layui-form" action="">
-						<input type="text" name="search" id="search" required lay-verify="required" placeholder="请输入关键词" autocomplete="off"
-						 class="layui-btn layui-btn-radius layui-btn-primary">
-						</from>
-				</div>
 			</header>
 		</div>
 
@@ -124,19 +117,9 @@
 					data: {},
 					dataType: "json", //返回数据形式为json
 					success: function(data) {
-						//console.log(data)
 						$(".layui-card-list").html("");
 						let layui_card_list = "";
 						$.each(data.list, function(i, f) {
-							/* let up = "up";
-							let down = "down";
-
-							let c_class_name = Number(data.list[i].c_increase)
-							c_class_name = c_class_name > 0 ? up : down
-
-							let a_class_name = Number(data.list[i].a_increase)
-							a_class_name = a_class_name > 0 ? up : down */
-
 							layui_card_list +=
 								`<li class="layui-card">
 						<div class="layui-card-header layui-row">
