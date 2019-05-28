@@ -10,6 +10,9 @@
 		<link rel="stylesheet" href="layuiadmin/style/admin.css" />
 		<link rel="stylesheet" href="layuiadmin/style/public.css" />
 		<link rel="stylesheet" href="layuiadmin/style/other.css" />
+		<style>
+			.layui-card-body { text-align:left;}
+		</style>
 	</head>
 	<body>
 		<div class="header">
@@ -19,7 +22,7 @@
 						<a href="javascript:history.back(-1)" class="layui-btn layui-btn-lg"><i class="layui-icon"></i></a>
 					</div>
 					<div class="layui-col-xs8 layui-col-sm8">
-						<h2>智慧统计-404页面不存在</h2>
+						<h2>智慧统计-搜索</h2>
 					</div>
 					<div class="layui-col-xs2 layui-col-sm2">
 						<a href="javascript:gonext()" class="layui-btn layui-btn-lg"><i class="layui-icon"></i></a>
@@ -27,21 +30,38 @@
 				</div>
 			</header>
 		</div>
-
 		<div class="layui-container main-wrap">
-			<div class="layui-fluid">
-				<div class="layadmin-tips">
-					<i class="layui-icon" face>&#xe664;</i>
-					<div class="layui-text">
-						<h1>
-							<span class="layui-anim layui-anim-loop layui-anim-">4</span>
-							<span class="layui-anim layui-anim-loop layui-anim-rotate">0</span>
-							<span class="layui-anim layui-anim-loop layui-anim-">4</span>
-						</h1>
-					</div>
+			<div class="layui-card layadmin-serach-main">
+				<div class="layui-card-header">
+					<span style="color: #01AAED">客户数</span> 查询到
+					<strong>12</strong> 个结果
+				</div>
+				<div class="layui-card-body">
+					<ul class="layadmin-serach-list layui-text">
+						<li>
+							<div class="layui-serachlist-text">
+								<h3>[指标]有限宽带客户数</h3>
+								<p>有限宽带客户数，单位：个。</p>
+								<p><a href="">点击查看该指标所有月份详细情况>>></a></p>
+							</div>
+						</li>
+						<li>
+							<div class="layui-serachlist-text">
+								<h3>[指标]有效集团客户数</h3>
+								<p>有效集团客户数，单位：个。</p>
+								<p><a href="">点击查看该指标所有月份详细情况>>></a></p>
+							</div>
+						</li>
+						<li>
+							<div class="layui-serachlist-text">
+								<h3>[报告]中国移动4G客户数发展报告</h3>
+								<p>中国移动2018年4G客户数发展报告正式发布，中国移动董事长尚冰表示：“中国移动坚持走‘连接驱动发展’道路，不忘初心，在中国成功实现将信息通信从少数人享有的稀缺资源，变成惠及地球上1/5人口的一流公共基础设施，以此带动数字化创新，成为了支撑经济发展、改善社会民生的重要引擎。”</p>
+								<p><a href="">点击查看该报告详细情况>>></a></p>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
-
 		</div>
 		<div class="copyright">
 			Copyright &copy; 2019 中国移动通信集团有限公司研究院
@@ -68,5 +88,6 @@
 			</footer>
 		</div>
 		<script src="layuiadmin/layui/layui.js"></script>
+		<script src="layuiadmin/modules/watermark.js"></script>
 	</body>
 </html>

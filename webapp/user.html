@@ -7,23 +7,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<title>智慧统计</title>
 		<link rel="stylesheet" href="layuiadmin/layui/css/layui.css" />
-		<link rel="stylesheet" href="layuiadmin/dist/style/admin.css" />
-		<link rel="stylesheet" href="layuiadmin/layui/css/public.css" />
-		<link rel="stylesheet" href="layuiadmin/layui/css/other.css" />
+		<link rel="stylesheet" href="layuiadmin/style/admin.css" />
+		<link rel="stylesheet" href="layuiadmin/style/public.css" />
+		<link rel="stylesheet" href="layuiadmin/style/other.css" />
 	</head>
 	<body>
 		<div class="header">
 			<header>
-				<div class="layui-row">
-					<div class="layui-col-xs2 layui-col-sm2">
-						<a href="javascript:history.back(-1)" class="layui-btn layui-btn-lg"><i class="layui-icon"></i></a>
-					</div>
-					<div class="layui-col-xs8 layui-col-sm8">
-						<h2>智慧统计-我的</h2>
-					</div>
-					<div class="layui-col-xs2 layui-col-sm2">
-						<a href="javascript:gonext()" class="layui-btn layui-btn-lg"><i class="layui-icon"></i></a>
-					</div>
+				<h2>智慧统计-我的</h2>
+				<!-- 搜索框 -->
+				<div class="search-wrap">
+					<form class="layui-form" action="">
+						<input type="text" name="search" id="search" required lay-verify="required" placeholder="请输入关键词" autocomplete="off"
+						 class="layui-btn layui-btn-radius layui-btn-primary">
+						</from>
 				</div>
 			</header>
 		</div>
@@ -38,7 +35,7 @@
 				<div class="layui-card text-center">
 					<div class="layui-card-body">
 						<div class="layadmin-homepage-pad-ver">
-							<img class="layadmin-homepage-pad-img" src="layuiadmin/dist/style/res/template/portrait.jpg" width="96" height="96">
+							<img class="layadmin-homepage-pad-img" src="layuiadmin/image/user.jpeg" width="96" height="96">
 						</div>
 						<h4 class="layadmin-homepage-font">李五</h4>
 						<p class="layadmin-homepage-min-font">集团财务部统计处</p>
@@ -105,9 +102,7 @@
 		</div>
 
 		<script src="layuiadmin/layui/layui.js"></script>
-		<script src="layuiadmin/dist/lib/admin.js"></script>
-		<script src="layuiadmin/dist/lib/view.js"></script>
-		<script src="layuiadmin/layui/js/watermark.js"></script>
+		<script src="layuiadmin/modules/watermark.js"></script>
 		<script>
 			watermark({
 				watermark_txt: "18663105621"

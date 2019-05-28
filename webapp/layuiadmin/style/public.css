@@ -4,10 +4,8 @@ input[type='button'], input[type='submit'], input[type='reset'], textarea {
 /*头部*/
 .header{width:100%;background:#006cff;color:#fff;text-align: center;padding-bottom:5px;}
 .header header h2{height:44px;line-height:44px;}
-.header header .layui-btn{background-color:#009688;}
 /*搜索框*/
-.search-wrap #title{width:95%;margin:0 auto;border-radius:20px;}
-.search-wrap #search{width:15%;padding-left:0px;position:absolute;right:0;top:0;}
+.search-wrap #search{width:95%;margin:0 auto;text-align:left;}
 /*主体*/
 .layui-card-header{padding: 0 5px;}
 .layui-card-body{padding:5px 5px;}
@@ -18,27 +16,29 @@ input[type='button'], input[type='submit'], input[type='reset'], textarea {
 .quota-list{display:flex; display: -webkit-flex; /* Safari */;flex-direction: row;flex-wrap: nowrap;justify-content:space-around;}
 .layui-card-header h4{font-size:12px;line-height:1.5;}
 .layui-card-body h4 span{display:inline-block;width:16px;height:16px;}
-.layui-card-body h4 span.up{background:url(../images/up.png) no-repeat center center;}
-.layui-card-body h4 span.down{background:url(../images/down.png) no-repeat center center;}
+.layui-card-body h4 span.up{background:url(../image/up.png) no-repeat center center;}
+.layui-card-body h4 span.down{background:url(../image/down.png) no-repeat center center;}
 /*按钮颜色*/
+.layui-btn-normal{background-color: #006cff;}
 .layer-ext-myskin .layui-layer-btn a{border-color: #009688;background-color: #009688;}
+.layui-btn-primary:hover{border-color: #006cff}
 /*底部菜单*/
 .footer{width:100%;background-color:#fff;position:fixed;left:0;bottom:0;z-index:1000;}
 .footer footer ul {display:flex; display: -webkit-flex; /* Safari */;flex-direction: row;flex-wrap: nowrap;justify-content:space-around;width:100%;margin-bottom: 0;}
 .footer footer ul li{list-style: none;text-align:center;}
 .footer footer ul li a{display:block;font-size:14px;padding:10% 0;line-height: 1;}
 .footer footer ul li a i{display:inline-block;width:16px;height:16px;margin-bottom: 1px;}
-.footer footer ul li a .footer-bg1{background:url(../images/home1.png) no-repeat;background-size:16px 16px;}
-.footer footer ul li a .footer-bg2{background:url(../images/quota1.png) no-repeat;background-size:16px 16px;}
-.footer footer ul li a .footer-bg3{background:url(../images/special1.png) no-repeat;background-size:16px 16px;}
-.footer footer ul li a .footer-bg4{background:url(../images/report1.png) no-repeat;background-size:16px 16px;}
-.footer footer ul li a .footer-bg5{background:url(../images/user1.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li a .footer-bg1{background:url(../image/home1.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li a .footer-bg2{background:url(../image/quota1.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li a .footer-bg3{background:url(../image/special1.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li a .footer-bg4{background:url(../image/report1.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li a .footer-bg5{background:url(../image/user1.png) no-repeat;background-size:16px 16px;}
 .footer footer ul li.active a{color:#009688;}
-.footer footer ul li.active a .footer-bg1{background:url(../images/home2.png) no-repeat;background-size:16px 16px;}
-.footer footer ul li.active a .footer-bg2{background:url(../images/quota2.png) no-repeat;background-size:16px 16px;}
-.footer footer ul li.active a .footer-bg3{background:url(../images/special2.png) no-repeat;background-size:16px 16px;}
-.footer footer ul li.active a .footer-bg4{background:url(../images/report2.png) no-repeat;background-size:16px 16px;}
-.footer footer ul li.active a .footer-bg5{background:url(../images/user2.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li.active a .footer-bg1{background:url(../image/home2.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li.active a .footer-bg2{background:url(../image/quota2.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li.active a .footer-bg3{background:url(../image/special2.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li.active a .footer-bg4{background:url(../image/report2.png) no-repeat;background-size:16px 16px;}
+.footer footer ul li.active a .footer-bg5{background:url(../image/user2.png) no-repeat;background-size:16px 16px;}
 /*版权信息*/
 .copyright{width:100%;font-size:12px;color:#999;text-align:center;line-height:30px;margin-bottom:36px;}
 /*用户登陆注册*/
