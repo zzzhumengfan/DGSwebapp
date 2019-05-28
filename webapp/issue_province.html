@@ -38,7 +38,7 @@
 				<div class="layui-card-body">
 					<!-- 折柱混合-->
 					<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-					<div id="issue-main" style="width:100%;height:400px;"></div>
+					<div id="issue-main" style="width:100%;height:300px;"></div>
 				</div>
 				<div class="layui-card-body">
 					<div class="layui-row layui-form">
@@ -60,6 +60,9 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="layui-card-body">
+					<table id="report_table"></table>
 				</div>
 			</section>
 
@@ -256,6 +259,75 @@
 
 				$(window).resize(function() {
 					myChartIssue.resize()
+				});
+				
+				//数据表格				
+				var table = layui.table;
+				table.render({
+					elem: '#report_table',
+					url: 'https://www.easy-mock.com/mock/5c6e22c28ef35e1f80e352ab/Intelligence_statistics/issue_month', //数据接口
+					page: false, //开启分页
+					even: true, //隔行背景
+					cellMinWidth: 40, //常规单元格的最小宽度（默认：60）
+					unresize:true,//是否禁用拖拽列宽（默认：false）
+					autoSort: true,
+					/* initSort: {
+						field: 'target', //排序字段，对应 cols 设定的各字段名,
+						type: 'desc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
+					}, */
+					cols: [
+						[ //表头
+							{
+								type: 'numbers', //序号列 根据指标值排序
+								title: '序号',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center'
+							},
+							{
+								field: 'month',
+								title: '月份',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center'
+				
+							}, {
+								field: 'target',
+								title: '指标值',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center',
+								sort: true //是否允许排序（默认：false)
+							},
+							{
+								field: 'cptarget',
+								title: '当期指标值',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center',
+								sort: true //是否允许排序（默认：false)
+							},
+							{
+								field: 'chainratio',
+								title: '环比',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center',
+								sort: true, //是否允许排序（默认：false)
+								templet: '<div>{{d.chainratio}}%</div> '
+							},
+							{
+								field: 'yoy',
+								title: '同比',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center',
+								sort: true, //是否允许排序（默认：false)
+								templet: '<div>{{d.yoy}}%</div> '
+							},
+							{
+								field: 'year',
+								title: '本年累计数',
+								unresize: true, //是否禁用拖拽列宽（默认：false）
+								align: 'center',
+								sort: true //是否允许排序（默认：false)
+							}
+						]
+					]
 				});
 
 			})

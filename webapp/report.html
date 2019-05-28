@@ -39,7 +39,7 @@
 					</button>
 					</from>
 			</div>
-			<div class="layui-card">
+			<div class="layui-card" id="report">
 				<div class="layui-card-body">
 					<img src="layuiadmin/layui/images/report3.jpeg">
 				</div>
@@ -94,11 +94,6 @@
 			watermark({
 				watermark_txt: "18663105621"
 			}) //传入动态水印内容
-			function gonext() {
-				window.history.forward() //返回下一页
-
-			}
-			
 			layui.use(['jquery', 'form'], function() {
 				var $ = layui.$
 				var form = layui.form; //搜索框
@@ -108,6 +103,9 @@
 					console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
 					return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
 				});
+				$("#report").click(function(){
+					window.location.href = "report_detail.html";
+				})
 			});
 		</script>
 	</body>

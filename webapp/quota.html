@@ -156,7 +156,7 @@
 							<h3>${f.name}</h3>
 							<h4>单位:${f.company}</h4>
 						  </div>
-						  <div class="layui-col-xs4 layui-card-header-right" index="${f.id}"><i class="layui-icon layui-icon-star"></i>&nbsp;关注</div>
+						  <div class="layui-col-xs4 layui-card-header-right" index="${f.id}"><i class="layui-icon layui-icon-star${f.state? '-fill' : ''}"></i>&nbsp;${f.state? '已关注' : '关注'}</div>
 						</div>
 						<div class="layui-card-body layui-row">
 							<ul class="quota-list">`

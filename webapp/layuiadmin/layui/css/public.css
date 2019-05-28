@@ -2,23 +2,21 @@
 input[type='button'], input[type='submit'], input[type='reset'], textarea {
     -webkit-appearance: none;}
 /*头部*/
-.header{width:100%;background:#009688;color:#fff;text-align: center;}
+.header{width:100%;background:#006cff;color:#fff;text-align: center;padding-bottom:5px;}
 .header header h2{height:44px;line-height:44px;}
 .header header .layui-btn{background-color:#009688;}
 /*搜索框*/
-.search-wrap{width:100%;margin-bottom:5px;position:relative}
-.search-wrap #title{width:85%;}
+.search-wrap #title{width:95%;margin:0 auto;border-radius:20px;}
 .search-wrap #search{width:15%;padding-left:0px;position:absolute;right:0;top:0;}
 /*主体*/
 .layui-card-header{padding: 0 5px;}
 .layui-card-body{padding:5px 5px;}
 /*指标列表*/
-.quota-list li{font-size:12px;}
+.quota-list li{font-size:14px;}
 .layui-card-list .layui-card{margin-bottom:5px;}
 .layui-card-list .layui-card:last-child{margin-bottom:0px;}
 .quota-list{display:flex; display: -webkit-flex; /* Safari */;flex-direction: row;flex-wrap: nowrap;justify-content:space-around;}
 .layui-card-header h4{font-size:12px;line-height:1.5;}
-.layui-card-body{/* background:url(../images/layui-card-body.jpg) no-repeat center center; */text-align: center;}
 .layui-card-body h4 span{display:inline-block;width:16px;height:16px;}
 .layui-card-body h4 span.up{background:url(../images/up.png) no-repeat center center;}
 .layui-card-body h4 span.down{background:url(../images/down.png) no-repeat center center;}

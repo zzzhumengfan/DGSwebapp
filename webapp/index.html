@@ -11,44 +11,24 @@
 		<link rel="stylesheet" href="layuiadmin/layui/css/public.css" />
 		<link rel="stylesheet" href="layuiadmin/layui/css/index.css" />
 		<style>
-			.layui-card-header{background:url(layuiadmin/layui/images/layui-card-header.jpeg) no-repeat left center;background-size:4px 35px;}
 			.layui-card-header h3{font-size:14px;line-height:1.5;}
 		</style>
 	</head>
 	<body>
 		<div class="header">
 			<header>
-				<div class="layui-row">
-					<div class="layui-col-xs2 layui-col-sm2">
-						<a href="javascript:history.back(-1)" class="layui-btn layui-btn-lg"><i class="layui-icon"></i></a>
-					</div>
-					<div class="layui-col-xs8 layui-col-sm8">
-						<h2>智慧统计</h2>
-					</div>
-					<div class="layui-col-xs2 layui-col-sm2">
-						<a href="javascript:gonext()" class="layui-btn layui-btn-lg"><i class="layui-icon"></i></a>
-					</div>
+				<h2>智慧统计</h2>
+				<!-- 搜索框 -->
+				<div class="search-wrap">
+					<form class="layui-form" action="">
+						<input type="text" name="title" id="title" required lay-verify="required" placeholder="请输入关键词" autocomplete="off"
+						 class="layui-input">
+						</from>
 				</div>
 			</header>
 		</div>
 
 		<div class="layui-container main-wrap">
-			<!-- 搜索框 -->
-			<div class="search-wrap">
-				<form class="layui-form" action="">
-					<input type="text" name="title" id="title" required lay-verify="required" placeholder="请输入指标关键值" autocomplete="off"
-					 class="layui-input">
-					<button type="submit" name="search" lay-submit lay-filter="*" id="search" class="layui-input"><i class="layui-icon layui-icon-search"></i>
-					</button>
-					</from>
-			</div>
-			<!-- 热搜 -->
-			<!-- <div class="hot-search-wrap layui-row layui-anim layui-anim-upbit">
-				<div class="layui-col-xs1"><strong>热搜</strong></div>
-				<div class="layui-col-xs11">
-					<p class="hot-search"></p>
-				</div>
-			</div> -->
 			<!-- 轮播图 -->
 			<div class="layui-carousel" id="test1">
 				<div carousel-item>
@@ -104,10 +84,6 @@
 				watermark_txt: "18663105621"
 			}) //传入动态水印内容
 
-			function gonext() {
-				window.history.forward() //返回下一页
-
-			}
 			layui.use(['jquery', 'form', 'carousel', 'element'], function() {
 				var $ = layui.$
 				var form = layui.form; //搜索框
@@ -115,15 +91,14 @@
 					console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
 					console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
 					console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
-					return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+					//阻止表单跳转。如果需要表单跳转，去掉这段即可。
+					
 				});
-				//屏幕滚动 触发热搜
-				/* $(window).scroll(function() {
-					if ($(window).scrollTop() > 10) {
-						$(".hot-search-wrap").show();
+				$(document).keydown(function(event) {
+					if (event.keyCode == 13) {
+						window.location.href = "search.html";
 					}
-				}); */
-				//热搜
+				});
 				var carousel = layui.carousel; //轮播图
 				//建造实例
 				var options = {
@@ -174,7 +149,7 @@
 				$("#follow").click(function() {
 					window.location.href = "quota.html";
 				})
-				
+
 				//推荐指标
 				$.ajax({
 					type: "get",
@@ -185,19 +160,21 @@
 					success: function(data) {
 						$("#recommend").html("");
 						let recommend = "";
+						console.log(data.list)
 						$.each(data.list, function(i, f) {
 							recommend +=
-								`<li class="layui-card">
+								`<li class="layui-card ` + `color` + i % 4 +
+								`">
 						<div class="layui-card-header">
-							<h3>${f.name}</h3>
-							<h4>单位:${f.company}</h4>
+							${f.name}&nbsp;(${f.company})
 						</div>
 						<div class="layui-card-body">
 							<ul class="quota-list">`
-								for (var j = 0; j < f.itemlen; j++) {
-									recommend += `<li>${f.calvalue[j]}</br>${f.calname[j]}</li>`
-								}
-								
+							//$.each(data.list, function(i, f) {})
+							for (var j = 0; j < f.itemlen; j++) {
+								recommend += `<li><h4>${f.calvalue[j]}</h4><h5>${f.calname[j]}</h5></li>`
+							}
+
 							recommend += `</ul>
 						</div>
 					</li>`
@@ -220,7 +197,7 @@
 					}
 				});
 
-				
+
 
 
 			});
