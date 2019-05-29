@@ -17,7 +17,6 @@ html,body{display:block;width:100%;height:100%;overflow: hidden;overflow-y: auto
 /*选项卡tabs切换*/
 .layui-tab{margin:0 0;}
 .layui-tab-content{padding:5px 0 0 0;}
-.layui-tab-title li{font-size: 16px;}
 .layui-tab-title li:first-child{background:#fff url(../image/recommend1.png) 22.5% center no-repeat;background-size: 18px 16px;}
 .layui-tab-title li:last-child{background:#fff url(../image/follow1.png) no-repeat 22.5% center;background-size:22px 16px;}
 .layui-tab-title li:first-child.layui-this{background:#fff url(../image/recommend2.png) 22.5% center no-repeat;background-size: 18px 16px;}
@@ -29,7 +28,7 @@ html,body{display:block;width:100%;height:100%;overflow: hidden;overflow-y: auto
 /*指标列表*/
 .layui-card-header{line-height:2;border-bottom: none;font-size: 16px;}
 .quota-list li h4{font-size:14px;}
-.quota-list li h5{font-size:12px;}
+.quota-list li h5{font-size:13px;}
 .quota-list li:first-child h4{font-size:18px;font-weight: 400;}
 .layui-card.color0 .quota-list li:first-child{color:#526cfe}
 .layui-card.color1 .quota-list li:first-child{color:#fe528b}
