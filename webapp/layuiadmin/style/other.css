@@ -32,3 +32,9 @@ html,body{display:block;height:100%;width:100%;position: absolute;left: 0;top: 0
 /* .layui-table-view .layui-table td{padding:0} */
 .layui-table-view .layui-table th{padding:0}
 .layui-table-view .layui-table th .layui-table-cell{line-height:1.1;height:35px;}
+/*指标列表*/
+.layui-card-header{border-bottom: none;}
+.quota-list li{font-size:12px;text-align: center;}
+.layui-card-list .layui-card{margin-bottom:5px;}
+.layui-card-list .layui-card:last-child{margin-bottom:0px;}
+.quota-list{display:flex; display: -webkit-flex; /* Safari */;flex-direction: row;flex-wrap: nowrap;justify-content:space-around;}

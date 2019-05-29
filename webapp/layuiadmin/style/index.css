@@ -24,12 +24,15 @@ html,body{display:block;width:100%;height:100%;overflow: hidden;overflow-y: auto
 .layui-tab-brief>.layui-tab-title .layui-this{color:#006cff;}
 .layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{border-bottom: 2px solid #006cff;
 }
-#follow{display:none;}
 /*指标列表*/
+.layui-card-list .layui-card{margin-bottom:5px;}
+.layui-card-list .layui-card:last-child{margin-bottom:0px;}
 .layui-card-header{line-height:2;border-bottom: none;font-size: 16px;}
-.quota-list li h4{font-size:14px;}
-.quota-list li h5{font-size:13px;}
-.quota-list li:first-child h4{font-size:18px;font-weight: 400;}
+.layui-card-body .quota-list{display:flex; display: -webkit-flex; /* Safari */;flex-direction: row;flex-wrap: nowrap;justify-content:space-around;}
+.layui-card-body .quota-list li{text-align: center;}
+.layui-card-body .quota-list li h4{font-size:14px;}
+.layui-card-body .quota-list li h5{font-size:13px;}
+.layui-card-body .quota-list li:first-child h4{font-size:18px;font-weight: 400;}
 .layui-card.color0 .quota-list li:first-child{color:#526cfe}
 .layui-card.color1 .quota-list li:first-child{color:#fe528b}
 .layui-card.color2 .quota-list li:first-child{color:#fe8b52}

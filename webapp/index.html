@@ -48,8 +48,8 @@
 						<ul class="layui-card-list" id="recommend"></ul>
 					</div>
 					<div class="layui-tab-item layui-anim layui-anim-upbit" id="follow_wrap">
-						<a class="layui-btn layui-btn-fluid" id="follow"><i class="layui-icon layui-icon-add-1"></i>添加自选指标</a>
-						<ul class="layui-card-list" id="follow_list"></ul>
+						<a class="layui-btn layui-btn-fluid" id="follow"><i class="layui-icon layui-icon-add-1"></i>添加关注指标</a>
+						<ul class="layui-card-list" id="follow_list" style="display:none;"></ul>
 					</div>
 				</div>
 			</div>
@@ -101,9 +101,14 @@
 					  content: $('#search-model'),
 					  anim: 2,
 					  isOutAnim: false,
-					  closeBtn:0
+					  closeBtn:0,
+					  success: function(layero, index){
+                              console.log(layero, index);
+                      }
 					});
+					
 					layer.full(search_model);
+					
 					$("#close").click(function() {
 					layer.closeAll(); //疯狂模式，关闭所有层
 					})

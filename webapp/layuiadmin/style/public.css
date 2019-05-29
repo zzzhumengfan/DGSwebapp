@@ -7,17 +7,9 @@ input[type='button'], input[type='submit'], input[type='reset'], textarea {
 /*主体*/
 .layui-card-header{padding: 0 5px;}
 .layui-card-body{padding:5px 5px;}
-/*指标列表*/
-.quota-list li{font-size:14px;text-align: center;}
-.layui-card-list .layui-card{margin-bottom:5px;}
-.layui-card-list .layui-card:last-child{margin-bottom:0px;}
-.quota-list{display:flex; display: -webkit-flex; /* Safari */;flex-direction: row;flex-wrap: nowrap;justify-content:space-around;}
-.layui-card-header h4{font-size:12px;line-height:1.5;}
-.layui-card-body h4 span{display:inline-block;width:16px;height:16px;}
-.layui-card-body h4 span.up{background:url(../image/up.png) no-repeat center center;}
-.layui-card-body h4 span.down{background:url(../image/down.png) no-repeat center center;}
 /*按钮颜色*/
 .layui-btn-normal{background-color: #006cff;}
+.layui-btn{background-color: #006cff;}
 .layer-ext-myskin .layui-layer-btn a{border-color: #009688;background-color: #009688;}
 .layui-btn-primary:hover{border-color: #006cff}
 /*底部菜单*/
