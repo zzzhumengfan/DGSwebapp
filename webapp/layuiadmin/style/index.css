@@ -32,7 +32,6 @@ html,body{display:block;width:100%;height:100%;overflow: hidden;overflow-y: auto
 }
 /*指标列表*/
 .layui-card-list .layui-card{margin-bottom:5px;}
-.layui-card-list .layui-card:last-child{margin-bottom:0px;}
 .layui-card-header{line-height:2;border-bottom: none;font-size: 16px;}
 .layui-card-body .quota-list{display:flex; display: -webkit-flex; /* Safari */;flex-direction: row;flex-wrap: nowrap;justify-content:space-around;}
 .layui-card-body .quota-list li{text-align: center;}

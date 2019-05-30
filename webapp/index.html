@@ -242,7 +242,7 @@
 						  <div class="layui-col-xs8 layui-card-header-left">
 							${f.name}&nbsp;(${f.company})
 						  </div>
-						  <div class="layui-col-xs4 layui-card-header-right" id="unfollow" index="${f.id}"><i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注</div>
+						  <div class="layui-col-xs4 layui-card-header-right unfollow"  index="${f.id}"><i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注</div>
 						</div>
 						<div class="layui-card-body layui-row">
 							<ul class="quota-list">`
@@ -259,15 +259,15 @@
 							window.location.href = "issue.html";
 						});
 						//关注与取消关注 
-						// $("#unfollow").click(function() {
-						//	if ($(this).children().hasClass("layui-icon-star")) {
-						//		$(this).html(` <i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注`)
-						//	} else {
-						//		$(this).parent().parent().slideUp(500, function() {
-						//			$(this).remove();
-						//		});
-						//	}
-						//})
+						 $(".unfollow").click(function() {
+							if ($(this).children().hasClass("layui-icon-star")) {
+								$(this).html(` <i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注`)
+							} else {
+								$(this).parent().parent().slideUp(500, function() {
+									$(this).remove();
+								});
+							}
+						})
 					},
 					error: function() {
 						//请求失败时执行该函数
