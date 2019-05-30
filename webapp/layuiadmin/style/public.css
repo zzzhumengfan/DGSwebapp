@@ -32,7 +32,7 @@ input[type='button'], input[type='submit'], input[type='reset'], textarea {
 .footer footer ul li.active a .footer-bg4{background:url(../image/report2.png) no-repeat;background-size:100%}
 .footer footer ul li.active a .footer-bg5{background:url(../image/user2.png) no-repeat;background-size:100%}
 /*版权信息*/
-.copyright{width:100%;font-size:12px;color:#999;text-align:center;line-height:2;}
+.copyright{width:100%;font-size:12px;color:#999;text-align:center;line-height:2;margin-bottom: 40px;}
 /*用户登陆注册*/
 .layadmin-user-login-footer{padding:0;}
 /*icon图标*/
