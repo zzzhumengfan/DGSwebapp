@@ -1,4 +1,5 @@
 html,body{display:block;width:100%;height:100%;overflow: hidden;overflow-y: auto;position:absolute;left:0;top:0;}
+.header{padding-bottom:5px;}
 /*搜索框*/
 .search-wrap #search-title{width:95%;margin:0 auto;text-align:left;background:#fff url(../image/search.png) no-repeat 10px center;background-size: 16px 16px;padding-left:28px;}
 /*搜索弹层*/

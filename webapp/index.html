@@ -33,8 +33,8 @@
 			<div class="layui-carousel" id="test1">
 				<ul carousel-item>
 					<li class="rotation_wrap1"><h2>全国2019年3月份经分报告</h2></li>
-					<li class="rotation_wrap2"><h2>有线宽带专题</h2></li>
-					<li class="rotation_wrap3"><h2>管理会计指标专题</h2></li>
+					<li class="rotation_wrap2"><h2>管理会计指标专题</h2></li>
+					<li class="rotation_wrap3"><h2>有线宽带专题</h2></li>
 				</ul>
 			</div>
 			<!-- 选项卡tabs切换 -->
@@ -159,6 +159,9 @@
 				$(".rotation_wrap1").click(function() {
 					window.location.href = "report_detail.html";
 				});
+				$(".rotation_wrap2").click(function() {
+					window.location.href = "quota_list.html";
+				});
 				
 				//一些事件监听
 				element.on('tab(demo)', function(data) {
@@ -238,7 +241,7 @@
 						  <div class="layui-col-xs8 layui-card-header-left">
 							${f.name}&nbsp;(${f.company})
 						  </div>
-						  <div class="layui-col-xs4 layui-card-header-right" index="${f.id}"><i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注</div>
+						  <div class="layui-col-xs4 layui-card-header-right" id="unfollow" index="${f.id}"><i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注</div>
 						</div>
 						<div class="layui-card-body layui-row">
 							<ul class="quota-list">`
@@ -255,15 +258,15 @@
 							window.location.href = "issue.html";
 						});
 						//关注与取消关注 
-						$(".layui-card-header-right").click(function() {
-							if ($(this).children().hasClass("layui-icon-star")) {
-								$(this).html(` <i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注`)
-							} else {
-								$(this).parent().parent().slideUp(500, function() {
-									$(this).remove();
-								});
-							}
-						})
+						// $("#unfollow").click(function() {
+						//	if ($(this).children().hasClass("layui-icon-star")) {
+						//		$(this).html(` <i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注`)
+						//	} else {
+						//		$(this).parent().parent().slideUp(500, function() {
+						//			$(this).remove();
+						//		});
+						//	}
+						//})
 					},
 					error: function() {
 						//请求失败时执行该函数

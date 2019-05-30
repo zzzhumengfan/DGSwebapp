@@ -2,7 +2,7 @@
 input[type='button'], input[type='submit'], input[type='reset'], textarea {
     -webkit-appearance: none;}
 /*头部*/
-.header{width:100%;background:#006cff;color:#fff;text-align: center;padding-bottom:5px;}
+.header{width:100%;background:#006cff;color:#fff;text-align: center;}
 .header header h2{height:44px;line-height:44px;}
 /*主体*/
 .layui-card-header{padding: 0 5px;}
@@ -25,7 +25,7 @@ input[type='button'], input[type='submit'], input[type='reset'], textarea {
 .footer footer ul li a .footer-bg4{background:url(../image/report1.png) no-repeat;background-size:100%}
 .footer footer ul li a .footer-bg5{background:url(../image/user1.png) no-repeat;background-size:100%}
 .footer footer ul li.active a{color:#006cff;}
-.footer footer ul li.active a .footer-bg1{background:url(../image/home2.png) no-repeat;background-size:100%}
+.footer footer ul li.active a .footer-bg1{background:url(../image/home22.png) no-repeat;background-size:100%}
 .footer footer ul li.active a .footer-bg2{background:url(../image/quota2.png) no-repeat;background-size:100%}
 .footer footer ul li.active a .footer-bg3{background:url(../image/special2.png) no-repeat;background-size:100%}
 .footer footer ul li.active a .footer-bg4{background:url(../image/report2.png) no-repeat;background-size:100%}
