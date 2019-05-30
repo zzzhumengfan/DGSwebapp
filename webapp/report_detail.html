@@ -13,8 +13,13 @@
 	</head>
 	<body>
 		<div class="header">
-			<header>
-				<h2>智慧统计-报告</h2>
+			<header class="layui-row">
+				<div class="layui-col-xs2">
+					<a href="javascript:history.back(-1)" class="layui-btn layui-btn-lg"><i class="layui-icon layui-icon-left" style="font-size:24px;"></i></a>
+				</div>
+				<h2 class="layui-col-xs8">智慧统计-报告</h2>
+				<div class="layui-col-xs2">
+				</div>
 			</header>
 		</div>
 
@@ -23,35 +28,16 @@
 				<div class="layui-card-header">
 					全国2019年3月份经分报告
 				</div>
+			</div>
+			<div class="layui-card">
 				<div class="layui-card-body">
-				<embed src="layuiadmin/data/report.pdf" type="application/pdf" width="100%" height="500">
+					<embed src="layuiadmin/data/report.pdf" type="application/pdf" width="100%" height="500">
 				</div>
 			</div>
 
 		</div>
 		<div class="copyright">
 			Copyright &copy; 2019 中国移动通信集团有限公司研究院
-		</div>
-		<div class="footer">
-			<footer>
-				<ul>
-					<li class="active">
-						<a href="index.html"><i class="footer-bg1">&nbsp;</i></br>首页</a>
-					</li>
-					<li>
-						<a href="quota.html"><i class="footer-bg2">&nbsp;</i></br>指标</a>
-					</li>
-					<li>
-						<a href="special.html"><i class="footer-bg3">&nbsp;</i></br>专题</a>
-					</li>
-					<li>
-						<a href="report.html"><i class="footer-bg4">&nbsp;</i></br>报告</a>
-					</li>
-					<li>
-						<a href="user.html"><i class="footer-bg5">&nbsp;</i></br>我的</a>
-					</li>
-				</ul>
-			</footer>
 		</div>
 		<script src="layuiadmin/layui/layui.js"></script>
 		<script src="layuiadmin/modules/watermark.js"></script>

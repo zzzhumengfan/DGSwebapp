@@ -14,17 +14,12 @@
 	<body>
 
 		<div class="header">
-			<header>
-				<div class="layui-row">
-					<div class="layui-col-xs2 layui-col-sm2">
-						<a href="javascript:history.back(-1)" class="layui-btn layui-btn-lg"><i class="layui-icon"></i></a>
-					</div>
-					<div class="layui-col-xs8 layui-col-sm8">
-						<h2>智慧统计-本期值</h2>
-					</div>
-					<div class="layui-col-xs2 layui-col-sm2">
-						<a href="javascript:gonext()" class="layui-btn layui-btn-lg"><i class="layui-icon"></i></a>
-					</div>
+			<header class="layui-row">
+				<div class="layui-col-xs2">
+					<a href="javascript:history.back(-1)" class="layui-btn layui-btn-lg"><i class="layui-icon layui-icon-left" style="font-size:24px;"></i></a>
+				</div>
+				<h2 class="layui-col-xs8">智慧统计-本期值</h2>
+				<div class="layui-col-xs2">
 				</div>
 			</header>
 		</div>
@@ -260,7 +255,7 @@
 				$(window).resize(function() {
 					myChartIssue.resize()
 				});
-				
+
 				//数据表格				
 				var table = layui.table;
 				table.render({
@@ -269,7 +264,7 @@
 					page: false, //开启分页
 					even: true, //隔行背景
 					cellMinWidth: 40, //常规单元格的最小宽度（默认：60）
-					unresize:true,//是否禁用拖拽列宽（默认：false）
+					unresize: true, //是否禁用拖拽列宽（默认：false）
 					autoSort: true,
 					/* initSort: {
 						field: 'target', //排序字段，对应 cols 设定的各字段名,
@@ -288,7 +283,7 @@
 								title: '月份',
 								unresize: true, //是否禁用拖拽列宽（默认：false）
 								align: 'center'
-				
+
 							}, {
 								field: 'target',
 								title: '指标值',

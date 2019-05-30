@@ -5,7 +5,7 @@ html,body{display:block;width:100%;height:100%;overflow: hidden;overflow-y: auto
 #search-model{display:none;}
 .search-header{padding:5px 0;}
 .search-header #close{display:block;width:100%;height:38px;line-height: 38px;text-align: center;}
-.search-box #search{width:75%;margin:0 5px 0 0;background:#eee url(../image/search.png) no-repeat 10px center;background-size: 16px 16px;padding-left:28px;text-align:left;}
+.search-box #search{width:75%;margin:0 5px 0 0;background:#eee url(../image/search.png) no-repeat 10px center;background-size: 16px 16px;padding-left:28px;text-align:left;color:#333;}
 .search-box #submit{width:20%;margin:0 0;}
 .search-body .layui-card{margin-bottom: 20px;box-shadow: 0 0px 0px 0 rgba(0,0,0,0);}
 .search-body .layui-card .layui-card-header{border-bottom: none;font-size:16px;}
@@ -14,6 +14,10 @@ html,body{display:block;width:100%;height:100%;overflow: hidden;overflow-y: auto
 /*轮播图*/
 .layui-carousel-ind li{background:#fff;}
 .layui-carousel-ind li.layui-this{background:#006cff;}
+.layui-carousel ul li h2{width:80%;margin:15% auto;color:#fff;text-align: center;font-size:24px;}
+.rotation_wrap1{background:url(../image/banner1.jpg) no-repeat center center;background-size:100%;}
+.rotation_wrap2{background:url(../image/banner2.jpg) no-repeat center center;background-size:100%;}
+.rotation_wrap3{background:url(../image/banner1.jpg) no-repeat center center;background-size:100%;}
 /*选项卡tabs切换*/
 .layui-tab{margin:0 0;}
 .layui-tab-content{padding:5px 0 0 0;}

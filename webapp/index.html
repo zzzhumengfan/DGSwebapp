@@ -31,11 +31,11 @@
 		<div class="layui-container main-wrap">
 			<!-- 轮播图 -->
 			<div class="layui-carousel" id="test1">
-				<div carousel-item>
-					<div class="rotation_wrap1">管理会计指标专题</div>
-					<div class="rotation_wrap2">有线宽带专题</div>
-					<div class="rotation_wrap3">全国2019年3月份经分报告</div>
-				</div>
+				<ul carousel-item>
+					<li class="rotation_wrap1"><h2>全国2019年3月份经分报告</h2></li>
+					<li class="rotation_wrap2"><h2>有线宽带专题</h2></li>
+					<li class="rotation_wrap3"><h2>管理会计指标专题</h2></li>
+				</ul>
 			</div>
 			<!-- 选项卡tabs切换 -->
 			<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
@@ -156,7 +156,7 @@
 				}
 				carousel.render(options)
 				$(".rotation_wrap1").click(function() {
-					window.location.href = "quota_list.html";
+					window.location.href = "report_detail.html";
 				});
 				
 				//一些事件监听
