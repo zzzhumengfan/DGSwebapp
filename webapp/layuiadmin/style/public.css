@@ -1,6 +1,7 @@
 *{margin:0;padding:0;}
 input[type='button'], input[type='submit'], input[type='reset'], textarea {
     -webkit-appearance: none;}
+/*用户页面*/.layadmin-link{color:#006cff!important}
 /*头部*/
 .header{width:100%;background:#006cff;color:#fff;text-align: center;}
 .header header h2{height:44px;line-height:44px;}
