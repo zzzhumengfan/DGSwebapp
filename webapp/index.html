@@ -263,7 +263,7 @@
 							if ($(this).children().hasClass("layui-icon-star")) {
 								$(this).html(` <i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注`)
 							} else {
-								$(this).parent().parent().slideUp(500, function() {
+								$(this).parent().parent().hide(500, function() {
 									$(this).remove();
 								});
 							}
