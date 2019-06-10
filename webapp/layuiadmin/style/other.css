@@ -1,4 +1,4 @@
-html,body{display:block;height:100%;width:100%;position: absolute;left: 0;top: 0;overflow: hidden;overflow-y: auto;}
+html,body{display:block;height:100%;width:100%;position: absolute;left: 0;top: 0;overflow: hidden;overflow-y: auto;color:#333;}
 .layui-card{margin-bottom:5px;}
 .layui-card-header strong{display: inline-block;margin-right:5px;}
 .layui-card-body{text-align: center;}
@@ -16,7 +16,7 @@ html,body{display:block;height:100%;width:100%;position: absolute;left: 0;top: 0
 /*404*/
 .layadmin-tips .layui-text{width:100%;}
 /*日期控件*/
-.layui-form-label{text-align: left;padding-left:0;padding-right:0;}
+.layui-form-label{padding-left:0;padding-right:0;}
 .layui-form[wid100] .layui-form-item .layui-input-inline{margin: 0;}
 .layui-form-mid{float: none;margin-right: 0;}
 /*表格*/
@@ -38,3 +38,21 @@ html,body{display:block;height:100%;width:100%;position: absolute;left: 0;top: 0
 .layui-card-list .layui-card{margin-bottom:5px;}
 .layui-card-list .layui-card:last-child{margin-bottom:0px;}
 .quota-list{display:flex; display: -webkit-flex; /* Safari */;flex-direction: row;flex-wrap: nowrap;justify-content:space-around;}
+/*专题*/
+#special_list li{background:#fff;margin-bottom: 5px;}
+#special_list li div h3{width:80%;margin:0 auto;margin-top:10%;}
+#special_list li div h4{width:80%;margin:0 auto;color:#9f9f9f}
+#special_list li div img{width:100%;}
+/*我的*/
+.user_header dd{text-align: left;padding-top:25px;}
+.userimg_wrap{width:100px;height:100px;margin:0 auto;border-radius:50%;overflow: hidden;}
+.userimg_wrap img{width:100%;}
+.user_message{padding: 5px 5px;}
+.user_message{display: flex;display: -webkit-flex;flex-direction: row;flex-wrap: nowrap;justify-content: space-around;}
+.user_message li h2 span{font-size:14px}
+.user_list{padding: 5px 5px;}
+.user_list .layui-card-header{margin-bottom: 5px;}
+/*修改资料*/
+.layui-form-item .layui-form-label{font-size:16px}
+.layui-form-item .layui-input-inline{margin-left: 100px;}
+.layui-input-block{margin-left: 100px;}

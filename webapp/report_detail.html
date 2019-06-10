@@ -11,7 +11,14 @@
 		<link rel="stylesheet" href="layuiadmin/style/public.css" />
 		<link rel="stylesheet" href="layuiadmin/style/other.css" />
 		<style>
-			.copyright{margin-bottom: 0;}
+			.header {
+				padding-bottom: 0px;
+			}
+			
+			.layui-btn {
+				background-color: #006cff;
+				color: #fff;
+			}
 		</style>
 	</head>
 	<body>
@@ -20,18 +27,13 @@
 				<div class="layui-col-xs2">
 					<a href="javascript:history.back(-1)" class="layui-btn layui-btn-lg"><i class="layui-icon layui-icon-left" style="font-size:24px;"></i></a>
 				</div>
-				<h2 class="layui-col-xs8">智慧统计-报告</h2>
+				<h2 class="layui-col-xs8">全国2019年3月份经分报告</h2>
 				<div class="layui-col-xs2">
 				</div>
 			</header>
 		</div>
 
 		<div class="layui-container main-wrap">
-			<div class="layui-card">
-				<div class="layui-card-header">
-					全国2019年3月份经分报告
-				</div>
-			</div>
 			<div class="layui-card">
 				<div class="layui-card-body">
 					<iframe id="myiframe" src="layuiadmin/plugins/pdfjs-2.0.943-dist/web/viewer.html?file=pdf/report.pdf" style="width:100%;"></iframe>

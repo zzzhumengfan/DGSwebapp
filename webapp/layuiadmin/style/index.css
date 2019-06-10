@@ -1,17 +1,4 @@
-html,body{display:block;width:100%;height:100%;overflow: hidden;overflow-y: auto;position:absolute;left:0;top:0;}
-.header{padding-bottom:5px;}
-/*搜索框*/
-.search-wrap #search-title{width:95%;margin:0 auto;text-align:left;background:#fff url(../image/search.png) no-repeat 10px center;background-size: 16px 16px;padding-left:28px;}
-/*搜索弹层*/
-#search-model{display:none;}
-.search-header{padding:5px 0;}
-.search-header #close{display:block;width:100%;height:38px;line-height: 38px;text-align: center;}
-.search-box #search{width:75%;margin:0 5px 0 0;background:#eee url(../image/search.png) no-repeat 10px center;background-size: 16px 16px;padding-left:28px;text-align:left;color:#333;}
-.search-box #submit{width:20%;margin:0 0;}
-.search-body .layui-card{margin-bottom: 20px;box-shadow: 0 0px 0px 0 rgba(0,0,0,0);}
-.search-body .layui-card .layui-card-header{border-bottom: none;font-size:16px;}
-.search-body .layui-card .layui-card-body{display:flex; display: -webkit-flex; /* Safari */;flex-direction:row;flex-wrap: wrap;justify-content: flex-start;}
-.search-body .layui-card .layui-card-body li{background:#eeeeee;border-radius:15px;padding:0 10px;line-height:2;margin-right:5px;}
+html,body{display:block;width:100%;height:100%;overflow: hidden;overflow-y: auto;position:absolute;left:0;top:0;color:#333;}
 /*轮播图*/
 .layui-carousel-ind ul{padding:3px;}
 .layui-carousel-ind li{background:#fff;}
@@ -30,19 +17,3 @@ html,body{display:block;width:100%;height:100%;overflow: hidden;overflow-y: auto
 .layui-tab-brief>.layui-tab-title .layui-this{color:#006cff;}
 .layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{border-bottom: 2px solid #006cff;
 }
-/*指标列表*/
-.layui-card-list .layui-card{margin-bottom:5px;}
-.layui-card-header{line-height:2;border-bottom: none;font-size: 16px;}
-.layui-card-body .quota-list{display:flex; display: -webkit-flex; /* Safari */;flex-direction: row;flex-wrap: nowrap;justify-content:space-around;}
-.layui-card-body .quota-list li{text-align: center;}
-.layui-card-body .quota-list li h4{font-size:14px;}
-.layui-card-body .quota-list li h5{font-size:13px;}
-.layui-card-body .quota-list li:first-child h4{font-size:18px;font-weight: 400;}
-.layui-card.color0 .quota-list li:first-child{color:#526cfe}
-.layui-card.color1 .quota-list li:first-child{color:#fe528b}
-.layui-card.color2 .quota-list li:first-child{color:#fe8b52}
-.layui-card.color3 .quota-list li:first-child{color:#40c008}
-.color0{border-left:3px solid #526cfe;}
-.color1{border-left:3px solid #fe528b;}
-.color2{border-left:3px solid #fe8b52;}
-.color3{border-left:3px solid #40c008;}

@@ -11,59 +11,72 @@
 		<link rel="stylesheet" href="layuiadmin/style/public.css" />
 		<link rel="stylesheet" href="layuiadmin/style/other.css" />
 		<style>
-			.layui-card-header{background:none;}
+			.layui-card-header {
+				background: none;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="header">
 			<header>
-				<h2>智慧统计-专题</h2>
+				<h2>专题</h2>
 			</header>
 		</div>
 
 		<div class="layui-container main-wrap">
-			<ul class="layui-card">
-				<li class="layui-card-header layui-row">
-					<div class="layui-col-xs11">
-						<i class="layui-icon layui-icon-template-1"></i>&nbsp;<span>有线宽带</span>
+			<ul id="special_list">
+				<li class="layui-row">
+					<div class="layui-col-xs6">
+						<h3>有线宽带</h3>
+						<h4>2018-2019 Q1业务收入对比分析</h4>
 					</div>
-					<div class="layui-col-xs1 layui-card-header-right">
-						<i class="layui-icon layui-icon-right"></i>
-					</div>
-				</li>
-				<li class="layui-card-header layui-row">
-					<div class="layui-col-xs11">
-						<i class="layui-icon layui-icon-dialogue"></i>&nbsp;<span>管理会计指标</span></div>
-					<div class="layui-col-xs1 layui-card-header-right">
-						<i class="layui-icon layui-icon-right"></i>
+					<div class="layui-col-xs6">
+						<img src="layuiadmin/image/special_banner1.png">
 					</div>
 				</li>
-				<li class="layui-card-header layui-row">
-					<div class="layui-col-xs11">
-						<i class="layui-icon layui-icon-rmb"></i>&nbsp;<span>物联网业务</span></div>
-					<div class="layui-col-xs1 layui-card-header-right">
-						<i class="layui-icon layui-icon-right"></i>
+				<li class="layui-row">
+					<div class="layui-col-xs6">
+						<h3>管理会计指标</h3>
+						<h4>2019 Q1经营数据分析</h4>
+					</div>
+					<div class="layui-col-xs6">
+						<img src="layuiadmin/image/special_banner2.png">
 					</div>
 				</li>
-				<li class="layui-card-header layui-row">
-					<div class="layui-col-xs11">
-						<i class="layui-icon layui-icon-chat"></i>&nbsp;<span>核算会计指标</span></div>
-					<div class="layui-col-xs1 layui-card-header-right">
-						<i class="layui-icon layui-icon-right"></i>
+				<li class="layui-row">
+					<div class="layui-col-xs6">
+						<h3>物联网业务</h3>
+						<h4>2018-2019 Q1业务收入对比分析</h4>
+					</div>
+					<div class="layui-col-xs6">
+						<img src="layuiadmin/image/special_banner1.png">
 					</div>
 				</li>
-				<li class="layui-card-header layui-row">
-					<div class="layui-col-xs11">
-						<i class="layui-icon layui-icon-cellphone"></i>&nbsp;<span>手机上网业务</span></div>
-					<div class="layui-col-xs1 layui-card-header-right">
-						<i class="layui-icon layui-icon-right"></i>
+				<li class="layui-row">
+					<div class="layui-col-xs6">
+						<h3>核算会计指标</h3>
+						<h4>2018-2019 Q1业务收入对比分析</h4>
+					</div>
+					<div class="layui-col-xs6">
+						<img src="layuiadmin/image/special_banner2.png">
 					</div>
 				</li>
-				<li class="layui-card-header layui-row">
-					<div class="layui-col-xs11">
-						<i class="layui-icon layui-icon-chart-screen"></i>&nbsp;<span>4G业务</span></div>
-					<div class="layui-col-xs1 layui-card-header-right">
-						<i class="layui-icon layui-icon-right"></i>
+				<li class="layui-row">
+					<div class="layui-col-xs6">
+						<h3>手机上网业务</h3>
+						<h4>2018-2019 Q1业务收入对比分析</h4>
+					</div>
+					<div class="layui-col-xs6">
+						<img src="layuiadmin/image/special_banner1.png">
+					</div>
+				</li>
+				<li class="layui-row">
+					<div class="layui-col-xs6">
+						<h3>4G业务</h3>
+						<h4>2018-2019 Q1业务收入对比分析</h4>
+					</div>
+					<div class="layui-col-xs6">
+						<img src="layuiadmin/image/special_banner2.png">
 					</div>
 				</li>
 			</ul>
@@ -113,8 +126,8 @@
 					console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
 					return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
 				});
-				$(".layui-card li").click(function() {
-					window.location.href = "quota_list.html";
+				$("#special_list li").click(function() {
+					window.location.href = "special_list.html";
 				});
 			});
 		</script>

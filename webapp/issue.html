@@ -10,6 +10,47 @@
 		<link rel="stylesheet" href="layuiadmin/style/admin.css" />
 		<link rel="stylesheet" href="layuiadmin/style/public.css" />
 		<link rel="stylesheet" href="layuiadmin/style/other.css" />
+		<style type="text/css">
+			.header {
+				padding-bottom: 0px;
+			}
+
+			.layui-btn {
+				background-color: #006cff;
+				color: #fff;
+			}
+
+			.layui-form {
+				height: 44px;
+			}
+
+			.layui-input-inline {
+				margin-top: 5px
+			}
+
+			.layui-input,
+			.layui-select,
+			.layui-textarea {
+				height: 34px
+			}
+
+			.layui-input,
+			.layui-textarea {
+				width: 80%;
+				margin: 0 auto;
+			}
+
+			.triangle-bottomleft {
+				position: absolute;
+				right: 11px;
+				bottom: 7px;
+				width: 0;
+				height: 0;
+				border-bottom: 7px solid #006cff;
+				border-left: 7px solid transparent;
+			}
+			.layui-col-xs3.layui-form{position:relative}
+		</style>
 	</head>
 	<body>
 
@@ -18,29 +59,47 @@
 				<div class="layui-col-xs2">
 					<a href="javascript:history.back(-1)" class="layui-btn layui-btn-lg"><i class="layui-icon layui-icon-left" style="font-size:24px;"></i></a>
 				</div>
-				<h2 class="layui-col-xs8">智慧统计-指标</h2>
-				<div class="layui-col-xs2">
+				<h2 class="layui-col-xs7">营业收入</h2>
+				<div class="layui-col-xs3 layui-form">
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input" id="test-laydate-start" placeholder="" lay-key="1">
+					</div>
+					<div class="triangle-bottomleft"></div>
 				</div>
 			</header>
 		</div>
 
 		<div class="layui-container main-wrap">
 			<section class="layui-card">
-				<div class="layui-card-header">
-					<h3>营业收入本期值</h3>
-				</div>
-			</section>
-			<section class="layui-card">
 				<div class="layui-card-body">
-					<div class="layui-row layui-form">
-						<div class="layui-col-xs3">
-							<label class="layui-form-label">选择月份</label></div>
-						<div class="layui-col-xs9">
-							<div class=" layui-input-inline">
-								<input type="text" class="layui-input" id="test-laydate-start" placeholder="" lay-key="1">
+					<ul class="layui-card-list">
+						<li class="layui-card color0">
+							<div class="layui-card-body layui-row">
+								<ul class="quota-list">
+									<li>
+										<h4>3650</h4>
+										<h5>指标值</h5>
+									</li>
+									<li>
+										<h4>9000</h4>
+										<h5>当期指标值</h5>
+									</li>
+									<li>
+										<h4>8.35%</h4>
+										<h5>环比</h5>
+									</li>
+									<li>
+										<h4>20.46%</h4>
+										<h5>同比</h5>
+									</li>
+									<li>
+										<h4>5785</h4>
+										<h5>本年累计数</h5>
+									</li>
+								</ul>
 							</div>
-						</div>
-					</div>
+						</li>
+					</ul>
 				</div>
 				<div class="layui-card-body">
 					<!-- 折柱混合-->
@@ -73,6 +132,7 @@
 				var insStart = laydate.render({
 					elem: '#test-laydate-start',
 					type: 'month',
+					theme: '#006cff',
 					value: '2018-04', //必须遵循format参数设定的格式
 					done: function(value, date) {
 						//console.log(value); 得到日期生成的值
@@ -96,60 +156,29 @@
 							}
 						}
 					},
-					toolbox: {
-						feature: {
-							dataView: {
-								show: true,
-								readOnly: false
-							},
-							magicType: {
-								show: true,
-								type: ['line', 'bar']
-							},
-							restore: {
-								show: true
-							},
-							saveAsImage: {
-								show: true
-							}
-						}
-					},
-					legend: {
-						top: 'top',
-						data: ['指标值'],
-						show: true
-					},
 					grid: {
 						left: 25,
 						right: 0,
-						top: 30
+						top: 20,
+						bottom: 45
 					},
-					dataZoom: [{
-							type: 'slider', //图表下方的伸缩条
-							show: true, //是否显示
-							realtime: true, //
-							bottom: -5,
-							start: 0, //伸缩条开始位置（1-100），可以随时更改
-							end: 50 //伸缩条结束位置（1-100），可以随时更改
-						},
-						{
-							type: 'inside', //鼠标滚轮
-							realtime: false
-							//还有很多属性可以设置，详见文档
-						}
-
-					],
 					xAxis: [{
 						//type: 'value',
 						data: [],
 						interval: 0,
 						axisPointer: {
 							type: 'shadow'
-						}
+						},
+						axisLabel: {
+							show: true,
+							textStyle: {
+								fontSize:10 //更改坐标轴文字大小
+							}
+						},
 					}],
 					yAxis: [{
 						//type: 'category',
-						interval: 20,
+						interval: 50,
 						axisLabel: {
 							min: 0,
 							max: 100
@@ -159,8 +188,14 @@
 						name: '指标值',
 						type: 'bar',
 						data: [],
+						barWidth: 7,
 						itemStyle: {
 							normal: {
+								color: '#526cfe',
+								emphasis: {
+									barBorderRadius: 30
+								},
+								barBorderRadius: [10, 10, 10, 10],
 								label: {
 									show: true, //开启显示
 									position: 'top', //在右方显示

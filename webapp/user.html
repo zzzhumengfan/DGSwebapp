@@ -10,67 +10,72 @@
 		<link rel="stylesheet" href="layuiadmin/style/admin.css" />
 		<link rel="stylesheet" href="layuiadmin/style/public.css" />
 		<link rel="stylesheet" href="layuiadmin/style/other.css" />
-		<style>
-			.copyright{margin-bottom: 0;}
-		</style>
 	</head>
 	<body>
 		<div class="header">
 			<header>
-				<h2>智慧统计-我的</h2>
+				<h2>我的</h2>
 			</header>
 		</div>
 
 		<div class="layui-container main-wrap">
 			<div class="layui-card">
-				<div class="layui-card-header">
-					我的主页
-				</div>
-			</div>
-			<div class="main-body">
-				<div class="layui-card text-center">
-					<div class="layui-card-body">
-						<div class="layadmin-homepage-pad-ver">
-							<img class="layadmin-homepage-pad-img" src="layuiadmin/image/user.jpeg" width="96" height="96">
+				<dl class="layui-card-body layui-row user_header">
+					<dt class="layui-col-xs4">
+						<div class="userimg_wrap">
+							<img class="layadmin-homepage-pad-img" src="layuiadmin/image/user.jpeg" width="96" height="96"></div>
+					<dt>
+					<dd class="layui-col-xs8">
+						<h3>李五</h3>
+						<h4>集团财务部统计处</h4>
+					</dd>
+				</dl>
+				<ul class="user_message">
+					<li>
+						<h2>0<span>次</span></h2>
+						<h4>登录</h4>
+					</li>
+					<li>
+						<h2>0<span>次</span></h2>
+						<h4>关注</h4>
+					</li>
+					<li>
+						<h2>0<span>天</span></h2>
+						<h4>来访</h4>
+					</li>
+				</ul>
+				<ul class="layui-card user_list">
+					<li class="layui-card-header layui-row" id="edit">
+						<div class="layui-col-xs11">
+							<i class="layui-icon layui-icon-edit"></i>&nbsp;<span>修改资料<span></div>
+						<div class="layui-col-xs1 layui-card-header-right">
+							<i class="layui-icon layui-icon-right"></i>
 						</div>
-						<h4 class="layadmin-homepage-font">李五</h4>
-						<p class="layadmin-homepage-min-font">集团财务部统计处</p>
-					</div>
-					<ul class="layui-card">
-						<li class="layui-card-header layui-row" id="edit">
-							<div class="layui-col-xs11">
-								<i class="layui-icon layui-icon-edit"></i>&nbsp;<span>修改资料<span></div>
-							<div class="layui-col-xs1 layui-card-header-right">
-								<i class="layui-icon layui-icon-right"></i>
-							</div>
-						</li>
-						<li class="layui-card-header layui-row" id="password">
-							<div class="layui-col-xs11">
-								<i class="layui-icon layui-icon-password"></i>&nbsp;<span>修改密码<span></div>
-							<div class="layui-col-xs1 layui-card-header-right">
-								<i class="layui-icon layui-icon-right"></i>
-							</div>
-						</li>
-						<li class="layui-card-header layui-row" id="#">
-							<div class="layui-col-xs11">
-								<i class="layui-icon layui-icon-survey"></i>&nbsp;<span>意见反馈</span>
-							</div>
-							<div class="layui-col-xs1 layui-card-header-right">
-								<i class="layui-icon layui-icon-right"></i>
-							</div>
-						</li>
-						<li class="layui-card-header layui-row" id="#">
-							<div class="layui-col-xs11">
-								<i class="layui-icon layui-icon-help"></i>&nbsp;<span>帮助<span></div>
-							<div class="layui-col-xs1 layui-card-header-right">
-								<i class="layui-icon layui-icon-right"></i>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<button class="layui-btn layui-btn-fluid" id="logout">退出</button>
+					</li>
+					<li class="layui-card-header layui-row" id="password">
+						<div class="layui-col-xs11">
+							<i class="layui-icon layui-icon-password"></i>&nbsp;<span>修改密码<span></div>
+						<div class="layui-col-xs1 layui-card-header-right">
+							<i class="layui-icon layui-icon-right"></i>
+						</div>
+					</li>
+					<li class="layui-card-header layui-row" id="#">
+						<div class="layui-col-xs11">
+							<i class="layui-icon layui-icon-survey"></i>&nbsp;<span>意见反馈</span>
+						</div>
+						<div class="layui-col-xs1 layui-card-header-right">
+							<i class="layui-icon layui-icon-right"></i>
+						</div>
+					</li>
+					<li class="layui-card-header layui-row" id="#">
+						<div class="layui-col-xs11">
+							<i class="layui-icon layui-icon-help"></i>&nbsp;<span>帮助<span></div>
+						<div class="layui-col-xs1 layui-card-header-right">
+							<i class="layui-icon layui-icon-right"></i>
+						</div>
+					</li>
+				</ul>
 			</div>
-
 		</div>
 		<div class="copyright">
 			Copyright &copy; 2019 中国移动通信集团有限公司研究院

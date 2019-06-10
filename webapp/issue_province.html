@@ -10,6 +10,17 @@
 		<link rel="stylesheet" href="layuiadmin/style/admin.css" />
 		<link rel="stylesheet" href="layuiadmin/style/public.css" />
 		<link rel="stylesheet" href="layuiadmin/style/other.css" />
+		<style>
+			.header {
+				padding-bottom: 0px;
+			}
+			
+			.layui-btn {
+				background-color: #006cff;
+				color: #fff;
+			}
+			
+		</style>
 	</head>
 	<body>
 
@@ -18,7 +29,7 @@
 				<div class="layui-col-xs2">
 					<a href="javascript:history.back(-1)" class="layui-btn layui-btn-lg"><i class="layui-icon layui-icon-left" style="font-size:24px;"></i></a>
 				</div>
-				<h2 class="layui-col-xs8">智慧统计-指标</h2>
+				<h2 class="layui-col-xs8">营业收入本期值</h2>
 				<div class="layui-col-xs2">
 				</div>
 			</header>
@@ -28,7 +39,7 @@
 		<div class="layui-container main-wrap">
 			<section class="layui-card">
 				<div class="layui-card-header">
-					<h3><strong>上市</strong>营业收入本期值</h3>
+					<h3><strong>上市</strong></h3>
 				</div>
 			</section>
 			<section class="layui-card">
@@ -85,6 +96,7 @@
 				var insStart = laydate.render({
 					elem: '#test-laydate-start',
 					type: 'month',
+					theme: '#006cff',
 					value: '2018-04', //必须遵循format参数设定的格式
 					done: function(value, date) {
 						//console.log(value); 得到日期生成的值
@@ -106,6 +118,7 @@
 				var insEnd = laydate.render({
 					elem: '#test-laydate-end',
 					type: 'month',
+					theme: '#006cff',
 					value: '2019-03', //必须遵循format参数设定的格式
 					done: function(value, date) {
 						//更新开始日期的最大日期
@@ -134,28 +147,11 @@
 							}
 						}
 					},
-					toolbox: {
-						feature: {
-							dataView: {
-								show: true,
-								readOnly: false
-							},
-							magicType: {
-								show: true,
-								type: ['bar', 'line']
-							},
-							restore: {
-								show: true
-							},
-							saveAsImage: {
-								show: true
-							}
-						}
-					},
-					legend: {
-						top: 'top',
-						data: ['指标值'],
-						show: true
+					grid: {
+						left: 25,
+						right: 20,
+						top: 20,
+						bottom: 45
 					},
 					xAxis: [{
 						//type: 'time',
@@ -182,6 +178,7 @@
 						data: [],
 						itemStyle: {
 							normal: {
+								color: '#526cfe',
 								label: {
 									show: true, //开启显示
 									position: 'top', //在上方显示

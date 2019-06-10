@@ -11,6 +11,14 @@
 		<link rel="stylesheet" href="layuiadmin/style/public.css" />
 		<link rel="stylesheet" href="layuiadmin/style/other.css" />
 		<style>
+			.header {
+				padding-bottom: 0px;
+			}
+			
+			.layui-btn {
+				background-color: #006cff;
+				color: #fff;
+			}
 			.layui-tab-title li{
             display: block;
         }
@@ -26,18 +34,13 @@
 				<div class="layui-col-xs2">
 					<a href="javascript:history.back(-1)" class="layui-btn layui-btn-lg"><i class="layui-icon layui-icon-left" style="font-size:24px;"></i></a>
 				</div>
-				<h2 class="layui-col-xs8">智慧统计-专题</h2>
+				<h2 class="layui-col-xs8">有限宽带专题</h2>
 				<div class="layui-col-xs2">
 				</div>
 			</header>
 		</div>
 
 		<div class="layui-container main-wrap">
-			<section class="layui-card">
-				<div class="layui-card-header">
-					管理会计指标专题
-				</div>
-			</section>
 				<ul class="layui-card-list">
 				</ul>
 		</div>
@@ -76,16 +79,19 @@
 						let layui_card_list = "";
 						$.each(data.list, function(i, f) {
 							layui_card_list +=
-							`<li class="layui-card">
-								<div class="layui-card-header">
+										`<li class="layui-card ` + `color` + i % 4 +
+										`">
+								<div class="layui-card-header layui-row">
+								  <div class="layui-col-xs8 layui-card-header-left">
 									${f.name}&nbsp;(${f.company})
+								  </div>
 								</div>
-								<div class="layui-card-body">
+								<div class="layui-card-body layui-row">
 									<ul class="quota-list">`
-								for (var j = 0; j < f.itemlen; j++) {
-									layui_card_list += `<li>${f.calvalue[j]}</br>${f.calname[j]}</li>`
-								}
-							layui_card_list += `</ul>
+										for (var j = 0; j < f.itemlen; j++) {
+											layui_card_list += `<li><h4>${f.calvalue[j]}</h4><h5>${f.calname[j]}</h5></li>`
+										}
+									layui_card_list += `</ul>
 								</div>
 							</li>`
 						})

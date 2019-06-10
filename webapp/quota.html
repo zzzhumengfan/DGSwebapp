@@ -11,33 +11,56 @@
 		<link rel="stylesheet" href="layuiadmin/style/public.css" />
 		<link rel="stylesheet" href="layuiadmin/style/other.css" />
 		<style>
-			.layui-tab-title{height:auto;}
-			.layui-tab-title li{display: block;padding:0 0;}
-			.layui-card-header{background:url(layuiadmin/layui/images/layui-card-header.jpeg) no-repeat left center;background-size:4px 35px;}
-			.layui-card-header h3{font-size:14px;line-height:1.5;}
+			/*tab导航*/	
+			#quota_tab{display:none;position:absolute;left:0px;top:5px;z-index:10;}
+			.layui-tab-card>.layui-tab-title{background:rgba(244,246,248,0.9);}
+			.layui-tab-card>.layui-tab-title .layui-this{background:#006cff;color:#fff;}
+			.layui-tab-card>.layui-tab-title .layui-this .triangle-bottomleft{display:block}
+			/* 小三角 */
+			.triangle-bottomleft{display:none;position:absolute;right:2px;bottom:2px;width:0;height:0;border-bottom:6px solid #fff;border-left:6px solid transparent;}
+			.layui-tab-title li{display: block;padding:0 0;position: relative;font-size: 16px;}
 	        .layui-tab-card{ display:flex;flex-flow:row;}
 			.layui-tab-title{width:90px;/*固定宽度*/  }
 			.layui-tab-content{ flex:1;/*这里设置为占比1，填充满剩余空间*/  }
+			
+			/*三条纹导航动画*/
+			#media_nav {position:fixed;left:25px;bottom:50px;width:40px;height:40px;border-radius:50%;background: #000;z-index:100;}
+			.enlarge {position:absolute;left:50%;top:50%;display:inline-block;cursor:pointer;z-index:100;width:20px;height:20px;margin-left:-10px;margin-top:-10px;}
+            .enlarge .icon::before{top:-9px;}
+            .enlarge .icon::before{background-color:#fff;content:"";height:3px;left:0;position:absolute;transition-duration: 0.5s;width:20px;border-radius:20px}
+            .enlarge .icon::after{background-color:#fff;content:"";height:3px;left:0;position:absolute;transition-duration: 0.5s;width:20px;border-radius:20px}
+            .enlarge .icon::after{top:9px;}
+            .enlarge .icon{background-color:#fff;height:3px;left:0;position:absolute;top:45%;transition-duration:0.5s;width:20px;border-radius:20px}
+            .enlargeSelect.enlarge .icon::before {transform:translateY(9px) rotate(45deg);}
+            .enlargeSelect.enlarge .icon::after {transform:translateY(-9px) rotate(-45deg);}
+            .enlargeSelect.enlarge .icon {width:0;}
     </style>
 	</head>
 	<body>
 
 		<div class="header">
 			<header>
-				<h2>智慧统计-指标</h2>
+				<h2>指标</h2>
+				<!-- 搜索框 -->
+				<div class="search-wrap">
+					<form class="layui-form" action="">
+						<input type="text" name="search-title" id="search-title" required lay-verify="required" placeholder="请输入关键词"
+						 autocomplete="off" class="layui-btn layui-btn-radius layui-btn-primary">
+						</from>
+				</div>
 			</header>
 		</div>
 
 		<div class="layui-container main-wrap">
 			<div class="layui-tab layui-tab-card ">
-				<ul class="layui-tab-title ">
-					<li class="layui-this"><i class="layui-icon layui-icon-template-1"></i>&nbsp;<span>业务发展</span></li>
-					<li><i class="layui-icon layui-icon-dialogue"></i>&nbsp;<span>通信能力</span></li>
-					<li><i class="layui-icon layui-icon-rmb"></i>&nbsp;<span>投资情况</span></li>
-					<li><i class="layui-icon layui-icon-chat"></i>&nbsp;<span>服务水平</span></li>
-					<li><i class="layui-icon layui-icon-chart-screen"></i>&nbsp;<span>能源消耗</span></li>
+				<ul class="layui-tab-title" id="quota_tab">
+					<li class="layui-this">业务发展<div class="triangle-bottomleft"></div></li>
+					<li>通信能力<div class="triangle-bottomleft"></div></li>
+					<li>投资情况<div class="triangle-bottomleft"></div></li>
+					<li>服务水平<div class="triangle-bottomleft"></div></li>
+					<li>能源消耗<div class="triangle-bottomleft"></div></li>
 				</ul>
-				<div class="layui-tab-content ">
+				<div class="layui-tab-content">
 					<div class="layui-tab-item layui-show layui-anim layui-anim-upbit">
 						<ul class="layui-card-list">
 						</ul>
@@ -59,6 +82,11 @@
 						</ul>
 					</div>
 				</div>
+			</div>
+		</div>
+		<div id="media_nav">
+			<div class="enlarge">
+				<div class="icon"></div>
 			</div>
 		</div>
 		<div class="copyright">
@@ -95,16 +123,79 @@
 				window.history.forward() //返回下一页
 			}
 
-			layui.use(['jquery', 'form', 'carousel', 'element'], function() {
+			layui.use(['jquery', 'form', 'carousel', 'element','layer'], function() {
 				var $ = layui.$
+				var layer = layui.layer;//弹层
 				var form = layui.form; //搜索框
-				form.on('submit(*)', function(data) {
+				var element = layui.element;
+				
+				//搜索框
+				$("#search-title").focus(function() {
+					var search_model = layer.open({
+					  type: 1,
+					  title: false,
+					  scrollbar: false,
+					  offset: '0px',
+					  content: $('#search-model'),
+					  anim: 2,
+					  isOutAnim: false,
+					  closeBtn:0,
+					  success: function(layero, index){
+				              console.log(layero, index);
+				      }
+					});
+					
+					layer.full(search_model);
+					
+					$("#close").click(function() {
+					layer.closeAll(); //疯狂模式，关闭所有层
+					})
+				});
+				
+				$(".search-card .layui-card-body li").each(function() {
+					$(this).click(function() {
+						var search_text = $(this).html()
+						$("#search").val(search_text)
+					})
+				})
+				
+				form.on('submit(searchform)', function(data) {
 					console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
 					console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
 					console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
-					return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+					//return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+					window.location.href = "search_result.html";
 				});
-				var element = layui.element;
+				
+				
+				$("#delete").click(function() {
+					layer.confirm('是否删除所有记录?', {
+						icon: 3,
+						title: '提示'
+					}, function(index) {
+						$("#history").empty();
+						layer.close(index);
+					})
+				})
+				
+				$("#refresh").click(function() {
+					console.log("刷新")
+				})
+				
+				//三条纹导航动画
+				$(".enlarge").on("click", function() {
+		          if($(this).hasClass("enlargeSelect")) {
+			        $(this).removeClass("enlargeSelect");
+		            } else {
+			       $(this).addClass("enlargeSelect");
+		         }
+	            });
+		       //tab导航
+			   $("#media_nav").click(function(){
+	             $("#quota_tab").toggle();
+	           });
+			   var wh=$(window).height();
+			   $("#quota_tab").height(wh)
 				//一些事件监听
 				element.on('tab(demo)', function(data) {
 					console.log(data);
@@ -121,17 +212,18 @@
 						let layui_card_list = "";
 						$.each(data.list, function(i, f) {
 							layui_card_list +=
-								`<li class="layui-card">
+								`<li class="layui-card ` + `color` + i % 4 +
+								`">
 						<div class="layui-card-header layui-row">
 						  <div class="layui-col-xs8 layui-card-header-left">
 							${f.name}&nbsp;(${f.company})
 						  </div>
-						  <div class="layui-col-xs4 layui-card-header-right" index="${f.id}"><i class="layui-icon layui-icon-star${f.state? '-fill' : ''}"></i>&nbsp;${f.state? '已关注' : '关注'}</div>
+						  <div class="layui-col-xs4 layui-card-header-right" index="${f.id}"><i class="layui-icon layui-icon-star${f.state? '-fill' : ''}"></i>&nbsp;</div>
 						</div>
 						<div class="layui-card-body layui-row">
 							<ul class="quota-list">`
 								for (var j = 0; j < f.itemlen; j++) {
-									layui_card_list += `<li>${f.calvalue[j]}</br>${f.calname[j]}</li>`
+									layui_card_list += `<li><h4>${f.calvalue[j]}</h4><h5>${f.calname[j]}</h5></li>`
 								}
 							layui_card_list += `</ul>
 						</div>
@@ -161,12 +253,12 @@
 								//将已关注数据存储到localStorage
 								localStorage.setItem(key_code, value_code)
 								if ($(this).children().hasClass("layui-icon-star")) {
-									$(this).html(` <i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注`)
+									$(this).html(` <i class="layui-icon layui-icon-star-fill"></i>`)
 									layer.msg('关注成功', {
 										icon: 6
 									});
 								} else {
-									$(this).html(` <i class="layui-icon layui-icon-star"></i>&nbsp;关注`)
+									$(this).html(` <i class="layui-icon layui-icon-star"></i>`)
 									layer.msg('取消关注', {
 										icon: 7
 									});
@@ -195,4 +287,48 @@
 			}); //layui模块结束
 		</script>
 	</body>
+	<div id="search-model">
+		<div class="search-header layui-row">
+			<div class="layui-col-xs1">
+				<span id="close"><i class="layui-icon layui-icon-left" style="font-size:24px;"></i></span>
+			</div>
+			<!-- 搜索框 -->
+			<div class="search-box layui-col-xs11">
+				<form class="layui-form" action="">
+					<input type="text" name="search" id="search" lay-verify="required" placeholder="请输入关键词" autocomplete="off" class="layui-btn layui-btn-radius layui-btn-primary"
+					 autofocus="autofocus">
+					<button class="layui-btn layui-btn-radius layui-btn-normal" id="submit" lay-submit lay-filter="searchform">搜索</button>
+					</from>
+			</div>
+		</div>
+		<div class="layui-container main-wrap search-body">
+			<div class="layui-card search-card">
+				<div class="layui-card-header layui-row">
+					<div class="layui-col-xs8 layui-card-header-left">
+						搜索历史
+					</div>
+					<div class="layui-col-xs4 layui-card-header-right" id="delete"><i class="layui-icon layui-icon-delete" style="font-size:18px;"></i>
+					</div>
+				</div>
+				<ul class="layui-card-body" id="history">
+					<li>客户数</li>
+					<li>市场份额</li>
+				</ul>
+			</div>
+			<div class="layui-card">
+				<div class="layui-card-header layui-row">
+					<div class="layui-col-xs8 layui-card-header-left">
+						猜你喜欢
+					</div>
+					<div class="layui-col-xs4 layui-card-header-right" id="refresh"><i class="layui-icon layui-icon-refresh" style="font-size:18px;"></i>
+					</div>
+				</div>
+				<ul class="layui-card-body">
+					<li>客户数</li>
+					<li>客户数</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
 </html>

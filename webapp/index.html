@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="layuiadmin/style/public.css" />
 		<link rel="stylesheet" href="layuiadmin/style/index.css" />
 		<style>
+			.layui-btn{display: block;}
 			.layui-card-header h3{font-size:14px;line-height:1.5;}
 		</style>
 	</head>
@@ -32,9 +33,15 @@
 			<!-- 轮播图 -->
 			<div class="layui-carousel" id="test1">
 				<ul carousel-item>
-					<li class="rotation_wrap1"><h2>全国2019年3月份经分报告</h2></li>
-					<li class="rotation_wrap2"><h2>管理会计指标专题</h2></li>
-					<li class="rotation_wrap3"><h2>有线宽带专题</h2></li>
+					<li class="rotation_wrap1">
+						<h2>全国2019年3月份经分报告</h2>
+					</li>
+					<li class="rotation_wrap2">
+						<h2>管理会计指标专题</h2>
+					</li>
+					<li class="rotation_wrap3">
+						<h2>有线宽带专题</h2>
+					</li>
 				</ul>
 			</div>
 			<!-- 选项卡tabs切换 -->
@@ -49,8 +56,9 @@
 					</div>
 					<div class="layui-tab-item layui-anim layui-anim-upbit" id="follow_wrap">
 						<ul class="layui-card-list" id="follow_list""></ul>
-						<a class="layui-btn layui-btn-fluid" id="follow"><i class="layui-icon layui-icon-add-1"></i>添加关注指标</a>
-						
+						<a class=" layui-btn layui-btn-fluid layui-btn-radius"
+						 id="follow"><i class="layui-icon layui-icon-add-1"></i>添加关注指标</a>
+
 					</div>
 				</div>
 			</div>
@@ -93,7 +101,7 @@
 				var carousel = layui.carousel; //轮播图
 				var element = layui.element; //选项卡tabs切换
 				
-				
+				//搜索框
 				$("#search-title").focus(function() {
 					var search_model = layer.open({
 					  type: 1,
@@ -145,8 +153,8 @@
 				$("#refresh").click(function() {
 					console.log("刷新")
 				})
-
-				//建造实例
+/////////////////////////////////////////////////////////////////////////////////////
+				//轮播图 建造实例
 				var options = {
 					elem: '#test1',
 					width: '100%', //设置容器宽度
@@ -191,7 +199,7 @@
 						</div>
 						<div class="layui-card-body">
 							<ul class="quota-list">`
-							//$.each(data.list, function(i, f) {})
+							$.each(data.list, function(i, f) {})
 							for (var j = 0; j < f.itemlen; j++) {
 								recommend += `<li><h4>${f.calvalue[j]}</h4><h5>${f.calname[j]}</h5></li>`
 							}
@@ -242,7 +250,7 @@
 						  <div class="layui-col-xs8 layui-card-header-left">
 							${f.name}&nbsp;(${f.company})
 						  </div>
-						  <div class="layui-col-xs4 layui-card-header-right unfollow"  index="${f.id}"><i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注</div>
+						  <div class="layui-col-xs4 layui-card-header-right unfollow"  index="${f.id}"><i class="layui-icon layui-icon-star-fill"></i></div>
 						</div>
 						<div class="layui-card-body layui-row">
 							<ul class="quota-list">`
@@ -261,7 +269,7 @@
 						//关注与取消关注 
 						 $(".unfollow").click(function() {
 							if ($(this).children().hasClass("layui-icon-star")) {
-								$(this).html(` <i class="layui-icon layui-icon-star-fill"></i>&nbsp;已关注`)
+								$(this).html(` <i class="layui-icon layui-icon-star-fill"></i>`)
 							} else {
 								$(this).parent().parent().hide(500, function() {
 									$(this).remove();
