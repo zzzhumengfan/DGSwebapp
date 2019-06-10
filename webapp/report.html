@@ -10,6 +10,11 @@
 		<link rel="stylesheet" href="layuiadmin/style/admin.css" />
 		<link rel="stylesheet" href="layuiadmin/style/public.css" />
 		<link rel="stylesheet" href="layuiadmin/style/other.css" />
+		<style>
+			.header {
+				padding-bottom: 0px;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="header">
@@ -83,11 +88,11 @@
 					console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
 					return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
 				});
-				
-				$("#report").click(function(){
-					window.location.href="report_detail.html"
+
+				$("#report").click(function() {
+					window.location.href = "report_detail.html"
 				})
-				
+
 			});
 		</script>
 	</body>
