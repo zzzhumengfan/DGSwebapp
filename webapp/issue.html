@@ -49,7 +49,10 @@
 				border-bottom: 7px solid #006cff;
 				border-left: 7px solid transparent;
 			}
-			.layui-col-xs3.layui-form{position:relative}
+
+			.layui-col-xs3.layui-form {
+				position: relative
+			}
 		</style>
 	</head>
 	<body>
@@ -158,7 +161,7 @@
 					},
 					grid: {
 						left: 25,
-						right: 0,
+						right: 10,
 						top: 20,
 						bottom: 70
 					},
@@ -168,7 +171,8 @@
 							realtime: true, //
 							bottom: -5,
 							start: 0, //伸缩条开始位置（1-100），可以随时更改
-							end: 75 //伸缩条结束位置（1-100），可以随时更改
+							end: 75, //伸缩条结束位置（1-100），可以随时更改
+							right: 15
 						},
 						{
 							type: 'inside', //鼠标滚轮
@@ -186,7 +190,7 @@
 						axisLabel: {
 							show: true,
 							textStyle: {
-								fontSize:10 //更改坐标轴文字大小
+								fontSize: 10 //更改坐标轴文字大小
 							}
 						},
 					}],
@@ -210,7 +214,7 @@
 									barBorderRadius: 30
 								},
 								barBorderRadius: [10, 10, 10, 10]
-								
+
 							}
 						}
 					}]
