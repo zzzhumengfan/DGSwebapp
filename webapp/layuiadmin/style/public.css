@@ -18,6 +18,7 @@ input[type='button'], input[type='submit'], input[type='reset'], textarea {
 .search-body .layui-card .layui-card-header{border-bottom: none;font-size:16px;}
 .search-body .layui-card .layui-card-body{display:flex; display: -webkit-flex; /* Safari */;flex-direction:row;flex-wrap: wrap;justify-content: flex-start;}
 .search-body .layui-card .layui-card-body li{background:#eeeeee;border-radius:15px;padding:0 10px;line-height:2;margin-right:5px;}
+.guess-card{display:none;}
 /*主体*/
 .layui-card-header{padding: 0 5px;}
 .layui-card-body{padding:5px 5px;}
