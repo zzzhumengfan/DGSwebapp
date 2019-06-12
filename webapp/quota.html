@@ -219,7 +219,7 @@
 						  <div class="layui-col-xs8 layui-card-header-left">
 							${f.name}&nbsp;(${f.company})
 						  </div>
-						  <div class="layui-col-xs4 layui-card-header-right" index="${f.id}"><i class="layui-icon layui-icon-star${f.state? '-fill' : ''}"></i>&nbsp;</div>
+						  <div class="layui-col-xs4 layui-card-header-right unfollow" index="${f.id}"><i class="${f.state? 'follow_bg' : 'unfollow_bg'}"></i>&nbsp;</div>
 						</div>
 						<div class="layui-card-body layui-row">
 							<ul class="quota-list">`
@@ -246,20 +246,20 @@
 							})
 						})
 
-						//关注
-						$(".layui-card-header-right").each(function(i) {
+						//关注与取消关注
+						$(".unfollow").each(function(i) {
 							$(this).click(function() {
 								var key_code = $(this).attr("index")
 								var value_code = $(this).parent().parent().html()
 								//将已关注数据存储到localStorage
 								localStorage.setItem(key_code, value_code)
-								if ($(this).children().hasClass("layui-icon-star")) {
-									$(this).html(` <i class="layui-icon layui-icon-star-fill"></i>`)
+								if ($(this).children().hasClass("unfollow_bg")) {
+									$(this).html(` <i class="follow_bg"></i>`)
 									layer.msg('关注成功', {
 										icon: 6
 									});
 								} else {
-									$(this).html(` <i class="layui-icon layui-icon-star"></i>`)
+									$(this).html(` <i class="unfollow_bg"></i>`)
 									layer.msg('取消关注', {
 										icon: 7
 									});

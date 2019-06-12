@@ -246,7 +246,7 @@
 						  <div class="layui-col-xs8 layui-card-header-left">
 							${f.name}&nbsp;(${f.company})
 						  </div>
-						  <div class="layui-col-xs4 layui-card-header-right unfollow"  index="${f.id}"><i class="layui-icon layui-icon-star-fill"></i></div>
+						  <div class="layui-col-xs4 layui-card-header-right unfollow"  index="${f.id}"><i class="follow_bg"></i></div>
 						</div>
 						<div class="layui-card-body layui-row">
 							<ul class="quota-list">`
@@ -264,9 +264,7 @@
 						});
 						//关注与取消关注 
 						 $(".unfollow").click(function() {
-							if ($(this).children().hasClass("layui-icon-star")) {
-								$(this).html(` <i class="layui-icon layui-icon-star-fill"></i>`)
-							} else {
+							if ($(this).children().hasClass("follow_bg")) {
 								$(this).parent().parent().hide(500, function() {
 									$(this).remove();
 								});

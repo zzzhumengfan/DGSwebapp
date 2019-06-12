@@ -61,6 +61,10 @@ input[type='button'], input[type='submit'], input[type='reset'], textarea {
 .layui-card-header-left{overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
 .layui-card-header-right{text-align:right;}
 .layui-icon.layui-icon-star-fill{color:#FFB800}
+.unfollow {position:relative}
+.unfollow i{display: block;width: 20px;height: 20px;position: absolute;right: 10px;top: 6px;}
+.follow_bg{background:url(../image/follow2.jpeg) no-repeat;background-size:100%}
+.unfollow_bg{background:url(../image/follow1.jpeg) no-repeat;background-size:100%}
 /*列间距*/
 .layui-col-space10{margin:0;}
 /*表单提示*/
