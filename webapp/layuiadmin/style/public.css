@@ -62,7 +62,7 @@ input[type='button'], input[type='submit'], input[type='reset'], textarea {
 .layui-card-header-right{text-align:right;}
 .layui-icon.layui-icon-star-fill{color:#FFB800}
 .unfollow {position:relative}
-.unfollow i{display: block;width: 20px;height: 20px;position: absolute;right: 10px;top: 6px;}
+.unfollow i{display: block;width: 22px;height: 22px;position: absolute;right: 10px;top: 6px;}
 .follow_bg{background:url(../image/follow2.jpeg) no-repeat;background-size:100%}
 .unfollow_bg{background:url(../image/follow1.jpeg) no-repeat;background-size:100%}
 /*列间距*/
