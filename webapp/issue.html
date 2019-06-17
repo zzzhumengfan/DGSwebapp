@@ -73,7 +73,7 @@
 				<div class="layui-card-body">
 					<ul class="layui-card-list">
 						<li class="layui-card color0">
-							<div class="layui-card-body layui-row">
+							<div class="layui-card-body layui-row" id="list">
 								<ul class="quota-list">
 									<li>
 										<h4>3650</h4>
@@ -336,6 +336,11 @@
 					//obj.data 得到当前行数据
 					window.location.href = "issue_province.html";
 				});
+				
+				$("#list").click(function(){
+					window.location.href = "issue_province.html";
+				})
+				
 			})
 		</script>
 	</body>
