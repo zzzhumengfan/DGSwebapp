@@ -33,10 +33,10 @@
 						<h2>全国2019年3月份经分报告</h2>
 					</li>
 					<li class="rotation_wrap2">
-						<h2>管理会计指标专题</h2>
+						<h2>工信部发布2018年第4季度通信水平分省情况</h2>
 					</li>
 					<li class="rotation_wrap3">
-						<h2>有线宽带专题</h2>
+						<h2>中国移动4G用户发展报告</h2>
 					</li>
 				</ul>
 			</div>
@@ -184,20 +184,21 @@
 					data: {},
 					dataType: "json", //返回数据形式为json
 					success: function(data) {
+						console.log(data)
 						$("#recommend").html("");
 						let recommend = "";
-						$.each(data.list, function(i, f) {
+						$.each(data.list, function(i,val) {
 							recommend +=
 								`<li class="layui-card ` + `color` + i % 4 +
 								`">
 						<div class="layui-card-header">
-							${f.name}&nbsp;(${f.company})
+							${val.name}&nbsp;(${val.company})
 						</div>
 						<div class="layui-card-body">
 							<ul class="quota-list">`
-							$.each(data.list, function(i, f) {})
-							for (var j = 0; j < f.itemlen; j++) {
-								recommend += `<li><h4>${f.calvalue[j]}</h4><h5>${f.calname[j]}</h5></li>`
+							$.each(data.list, function(i, val) {})
+							for (var j = 0; j < val.itemlen; j++) {
+								recommend += `<li><h4>${val.calvalue[j]}</h4><h5>${val.calname[j]}</h5></li>`
 							}
 
 							recommend += `</ul>
