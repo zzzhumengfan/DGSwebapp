@@ -13,7 +13,7 @@
 		<style>
 			.search-box .layui-btn{display:inline-block;background-color: #006cff;color: #fff;}
 			/*tab导航*/	
-			#quota_tab{display:none;position:absolute;left:0px;top:5px;z-index:10;}
+			#tab_list{display:none;position:absolute;left:0px;top:5px;z-index:10;}
 			.layui-tab-card>.layui-tab-title{background:rgba(244,246,248);}
 			.layui-tab-card>.layui-tab-title .layui-this{background:#006cff;color:#fff;}
 			.layui-tab-card>.layui-tab-title .layui-this .triangle-bottomleft{display:block}
@@ -53,8 +53,8 @@
 		</div>
 
 		<div class="layui-container main-wrap">
-			<div class="layui-tab layui-tab-card ">
-				<ul class="layui-tab-title" id="quota_tab">
+			<div class="layui-tab layui-tab-card" lay-filter="tab">
+				<ul class="layui-tab-title" id="tab_list">
 					<li class="layui-this">损益指标<div class="triangle-bottomleft"></div></li>
 					<li>资产负债情况<div class="triangle-bottomleft"></div></li>
 					<li>现金流情况<div class="triangle-bottomleft"></div></li>
@@ -223,13 +223,16 @@
 	            });
 		       //tab导航
 			   $("#media_nav").click(function(){
-	             $("#quota_tab").toggle();
+	             $("#tab_list").toggle();
 	           });
 			   var wh=$(window).height();
-			   $("#quota_tab").height(wh)
+			   $("#tab_list").height(wh)
+				
 				//一些事件监听
-				element.on('tab(demo)', function(data) {
+				element.on('tab(tab)', function(data) {
 					console.log(data);
+					$("#tab_list").hide();
+					$(".enlarge").removeClass("enlargeSelect");
 				});
 
 				$.ajax({
