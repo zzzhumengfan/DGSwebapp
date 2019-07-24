@@ -1,4 +1,4 @@
-html,body{display:block;width:100%;height:100%;overflow: hidden;overflow-y: auto;position:absolute;left:0;top:0;color:#333;}
+html,body{display:block;width:100%;height:100%;overflow: hidden;overflow-y: auto;position:absolute;left:0;top:0;color:#333;background-color: #f2f2f2;}
 .layui-btn{display: block;}
 .search-box .layui-btn{display:inline-block;background-color: #006cff;color: #fff;}
 /*轮播图*/

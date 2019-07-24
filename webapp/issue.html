@@ -7,7 +7,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<title>智慧统计</title>
 		<link rel="stylesheet" href="layuiadmin/layui/css/layui.css" />
-		<link rel="stylesheet" href="layuiadmin/style/admin.css" />
 		<link rel="stylesheet" href="layuiadmin/style/public.css" />
 		<link rel="stylesheet" href="layuiadmin/style/other.css" />
 		<style type="text/css">
@@ -19,7 +18,7 @@
 				background-color: #006cff;
 				color: #fff;
 			}
-			
+
 			.layui-input-inline {
 				margin-top: 5px
 			}
@@ -49,6 +48,51 @@
 			.layui-col-xs3.layui-form {
 				position: relative
 			}
+
+			.layui-tab-title {
+				display: flex;
+				display: -webkit-flex;
+				/* Safari */
+				;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				justify-content: space-around;
+			}
+
+			.layui-card .layui-tab-brief .layui-tab-title li {
+				margin: 0 0;
+
+			}
+
+			.layui-tab-brief>.layui-tab-title .layui-this {
+				color: #526cfe;
+			}
+
+			.layui-tab-title {
+				height: 58px;
+			}
+
+			.layui-tab-title li {
+				padding: 0px 0px;
+				line-height: 1.7;
+				width: 100%;
+			}
+
+			.layui-tab-title li strong {
+				font-size: 18px;
+			}
+
+			.layui-tab-title li span {
+				font-size: 14px;
+			}
+
+			.layui-tab-title .layui-this:after {
+				height: 58px;
+			}
+			.layui-tab-brief>.layui-tab-more li.layui-this:after,
+			.layui-tab-brief>.layui-tab-title .layui-this:after {
+				border-bottom: 2px solid #526cfe;
+			}
 		</style>
 	</head>
 	<body>
@@ -69,46 +113,56 @@
 		</div>
 
 		<div class="layui-container main-wrap">
-			<section class="layui-card">
-				<div class="layui-card-body">
-					<ul class="layui-card-list">
-						<li class="layui-card color0">
-							<div class="layui-card-body layui-row" id="list">
-								<ul class="quota-list">
-									<li>
-										<h4>60</h4>
-										<h5>指标值</h5>
-									</li>
-									<li>
-										<h4>90</h4>
-										<h5>当期指标值</h5>
-									</li>
-									<li>
-										<h4>8.35%</h4>
-										<h5>环比</h5>
-									</li>
-									<li>
-										<h4>20.46%</h4>
-										<h5>同比</h5>
-									</li>
-									<li>
-										<h4>5785</h4>
-										<h5>本年累计数</h5>
-									</li>
-								</ul>
-							</div>
+			<div class="layui-card">
+				<div class="layui-tab layui-tab-brief" lay-filter="list">
+					<ul class="layui-tab-title">
+						<li class="layui-this">
+							<strong>3650</strong><br />
+							<span>指标值</span>
+						</li>
+						<li>
+							<strong>9000</strong><br />
+							<span>当期指标值</span>
+						</li>
+						<li>
+							<strong>8.35%</strong><br />
+							<span>环比</span>
+						</li>
+						<li>
+							<strong>20.46%</strong><br />
+							<span>同比</span>
+						</li>
+						<li>
+							<strong>5785</strong><br />
+							<span>本年累计数</span>
 						</li>
 					</ul>
+					<ul class="layui-tab-content">
+						<li class="layui-tab-item layui-show">
+							<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+							<div id="issue-main" style="width:100%;height:275px;"></div>
+						</li>
+						<li class="layui-tab-item">
+							<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+							<div id="issue-main" style="width:100%;height:275px;"></div>
+						</li>
+						<li class="layui-tab-item">
+							<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+							<div id="issue-main" style="width:100%;height:275px;"></div>
+						</li>
+						<li class="layui-tab-item">
+							<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+							<div id="issue-main" style="width:100%;height:275px;"></div>
+						</li>
+						<li class="layui-tab-item">
+							<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+							<div id="issue-main" style="width:100%;height:275px;"></div>
+						</li>
+
+					</ul>
 				</div>
-				<div class="layui-card-body">
-					<!-- 折柱混合-->
-					<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-					<div id="issue-main" style="width:100%;height:275px;"></div>
-				</div>
-				<div class="layui-card-body">
-					<table id="report_table"></table>
-				</div>
-			</section>
+				<table id="report_table"></table>
+			</div>
 		</div>
 		<div class="copyright">
 			Copyright &copy; 2019 中国移动通信集团有限公司研究院
@@ -123,10 +177,11 @@
 				window.history.forward() //返回下一页
 			}
 
-			layui.use(['jquery', 'echarts', 'laydate', 'table'], function() {
+			layui.use(['jquery', 'echarts', 'laydate', 'table', 'element'], function() {
 				var $ = layui.$;
 				var echarts = layui.echarts
 				var laydate = layui.laydate;
+				var element = layui.element; //选项卡tabs切换
 				//开始日期
 				var insStart = laydate.render({
 					elem: '#test-laydate-start',
@@ -141,6 +196,13 @@
 				$("#test-laydate-start").focus(function() {
 					document.activeElement.blur(); //当文本框获取焦点时，禁止手机弹出自带的输入键盘
 				});
+
+				//一些事件监听
+				element.on('tab(list)', function(data) {
+					console.log(data);
+				});
+
+
 				//app.title = '柱状图';
 				// 基于准备好的dom，初始化echarts实例
 				var myChartIssue = echarts.init(document.getElementById('issue-main'));
@@ -336,11 +398,11 @@
 					//obj.data 得到当前行数据
 					window.location.href = "issue_province.html";
 				});
-				
-				$("#list").click(function(){
+
+				$("#list").click(function() {
 					window.location.href = "issue_province.html";
 				})
-				
+
 			})
 		</script>
 	</body>
